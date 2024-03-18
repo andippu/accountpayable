@@ -18,6 +18,9 @@ public class ServiceBKMaster {
 		return repoBKM.getBeliBK(splcode, nopo, nottb, dt);
 	}
 	
+	public List<BeliBKMaster> getBKMCU(String pono, String ttbno){
+		return repoBKM.findByBbmNoPOAndBbmNoTtb(pono, ttbno);
+	}
 	
 	
 

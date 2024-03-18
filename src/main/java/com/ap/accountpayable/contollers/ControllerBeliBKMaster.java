@@ -21,6 +21,11 @@ public class ControllerBeliBKMaster {
 		return servBK.getBeliBKList(splcode, nopo, nottb, dt);
 	}
 	
+	@GetMapping("/belibk/getbbkmcu")
+	public List<BeliBKMaster> getBKMCU(String pono, String ttbno){
+		return servBK.getBKMCU(pono, ttbno);
+	}
+	
 	
 
 }
