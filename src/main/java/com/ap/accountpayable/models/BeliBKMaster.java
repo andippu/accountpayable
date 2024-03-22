@@ -19,7 +19,7 @@ import java.util.Date;
 public class BeliBKMaster {
 	 @Id
 	 @Column(name="BLBKMS_ID")
-	 private BigDecimal bbm_id;
+	 private BigDecimal bbmId;
 	 
 	 @Column (name="NO_PO" ,length=50, nullable = false)
 	 private String bbmNoPO;
