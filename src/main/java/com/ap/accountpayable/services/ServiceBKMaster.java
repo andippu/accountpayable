@@ -21,6 +21,10 @@ public class ServiceBKMaster {
 		return repoBKM.getBeliBK(splcode, nopo, nottb, dt);
 	}
 	
+	public List<BeliBKMaster> getBeliNotBKList(String splcode, String nopo, String nottb,  String dt){
+		return repoBKM.getBeliNotBK(splcode, nopo, nottb, dt);
+	}
+	
 	public List<BeliBKMaster> getBKMCU(String pono, String ttbno){
 		return repoBKM.findByBbmNoPOAndBbmNoTtb(pono, ttbno);
 	}
@@ -31,7 +35,7 @@ public class ServiceBKMaster {
 	
 	@Transactional
 	public String updateBeliBKMaster (String fisik, String btf, BigDecimal bmmId) {
-		//System.out.println("aaaaaaaaaaaaaaaaaaaaaa : "+fisik);
+	//	System.out.println("aaaaaaaaaaaaaaaaaaaaaa : "+fisik+"/"+btf+"/"+bmmId);
 		repoBKM.updateBBKM(fisik, btf, bmmId);
 		/*List<BeliBKMaster> belimas =  repoBKM.findByBbmId(bmmId)	
 			belimas.setBbmCekFisik(fisik);   

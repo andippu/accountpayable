@@ -20,16 +20,21 @@ public interface IBeliBKMaster extends JpaRepository<BeliBKMaster, BigDecimal> {
 	//@Query(value="SELECT s FROM BeliBKMaster s WHERE s.bbmPosting = 'N' AND s.bbmSplCode LIKE %:splcode% "
 		//	+ "	AND s.bbmNoPO LIKE %:nopo% AND s.bbmNoTtb LIKE %:nottb% AND to_char(SUSUT_TGL_PEROLEHAN,'Mon dd yyyy') LIKE %dt% " )
 	@Query(value="SELECT * FROM BELI_BK_MASTER s WHERE s.POSTING = 'N' AND s.SPL_CODE LIKE '%'||:splcode||'%'"
-				+ "	AND s.NO_PO LIKE '%'||:nopo||'%' AND s.NO_TTB LIKE '%'||:nottb||'%' AND to_char(TTB_DATE,'Mon dd yyyy') LIKE '%'||:dt||'%' ", nativeQuery = true )
+				+ "	AND s.NO_PO LIKE '%'||:nopo||'%' AND s.NO_TTB LIKE '%'||:nottb||'%' AND to_char(TTB_DATE,'Mon dd yyyy') LIKE '%'||:dt||'%' AND TIPE_BARANG IN ('BB','BK')" , nativeQuery = true )
 	public List<BeliBKMaster> getBeliBK(String splcode, String nopo, String nottb, String dt);
+	
+	@Query(value="SELECT * FROM BELI_BK_MASTER s WHERE s.POSTING = 'N' AND s.SPL_CODE LIKE '%'||:splcode||'%'"
+			+ "	AND s.NO_PO LIKE '%'||:nopo||'%' AND s.NO_TTB LIKE '%'||:nottb||'%' AND to_char(TTB_DATE,'Mon dd yyyy') LIKE '%'||:dt||'%' AND TIPE_BARANG NOT IN ('BB','BK')", nativeQuery = true )
+	public List<BeliBKMaster> getBeliNotBK(String splcode, String nopo, String nottb, String dt);
+	
 	
 	List<BeliBKMaster> findByBbmNoPOAndBbmNoTtb (String pono, String ttbno);
 	
 	List<BeliBKMaster> findByBbmId (BigDecimal bbmId);
 	
 	@Modifying
-	@Query("update BeliBKMaster u set u.bbmCekFisik = :fisik, u.bbmBTF = :btf where u.bbmId = :bbmId")
-	void updateBBKM(@Param(value = "fisik") String fisik, @Param(value = "btf") String btf, @Param(value = "bbmId") BigDecimal bmmId);
+	@Query("update BeliBKMaster u set u.bbmCekFisik = :fisik, u.bbmBTF = :btf where u.bbmId = :bbmid")
+	void updateBBKM(@Param(value = "fisik") String fisik, @Param(value = "btf") String btf, @Param(value = "bbmid") BigDecimal bbmid);
 	
 
 

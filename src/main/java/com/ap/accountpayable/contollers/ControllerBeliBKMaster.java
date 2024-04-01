@@ -23,6 +23,11 @@ public class ControllerBeliBKMaster {
 		return servBK.getBeliBKList(splcode, nopo, nottb, dt);
 	}
 	
+	@GetMapping("/belibk/getbnotbkmlist")
+	public List<BeliBKMaster> getBeliNotBKList(String splcode, String nopo, String nottb, String dt){
+		return servBK.getBeliNotBKList(splcode, nopo, nottb, dt);
+	}
+	
 	@GetMapping("/belibk/getbbkmcu")
 	public List<BeliBKMaster> getBKMCU(String pono, String ttbno){
 		return servBK.getBKMCU(pono, ttbno);
@@ -34,7 +39,7 @@ public class ControllerBeliBKMaster {
 	}
 	
 	
-	@PostMapping("/belibk/updatebbkm")
+	@GetMapping("/belibk/updatebbkm")
 	public String updateBeliBKMaster (String fisik, String btf, BigDecimal bmmId) {
 		return servBK.updateBeliBKMaster(fisik, btf, bmmId);
 		

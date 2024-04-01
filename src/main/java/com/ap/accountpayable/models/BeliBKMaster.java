@@ -107,4 +107,9 @@ public class BeliBKMaster {
 	 
 	 @Column (name="CHGDATE" )			 
 	 private Date bbmChgDate;
+	 
+	 @Column (name="SUPP_TYPE", length=20 )			 
+	 private String bbmSuppType;
+	 
+	 
 }
