@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.ap.accountpayable.models.BayarBKMaster;
 import com.ap.accountpayable.models.BayarBKMasterCompKey;
+import com.ap.accountpayable.models.VPurchaseUnpaid;
+import com.ap.accountpayable.models.VPurchaseUnpaidCompKey;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -16,14 +18,14 @@ import java.util.List;
 
 @Repository
 @CrossOrigin("http://localhost:4200")
-public interface IBayarBKMaster extends JpaRepository<BayarBKMaster,BayarBKMasterCompKey> {
+
+public interface IPurchaseUnpaid extends JpaRepository<VPurchaseUnpaid,VPurchaseUnpaidCompKey> {
 	
-	@Query(value="SELECT * FROM BAYAR_BK_MASTER S WHERE S.BYM_TAHUN LIKE '%'||:thn||'%' "
-			+ "AND S.BYM_BULAN LIKE '%'||:bln||'%' "
-			+ "AND S.BYM_NO LIKE '%'||:novou||'%'", nativeQuery = true)
-	public List<BayarBKMaster> getByrBKList(String thn, String bln, String novou);
+	List<VPurchaseUnpaid> findByVbyupTtbAndVbyupPo(String ttbno, String pono);
 	
-	@Query(value="SELECT * FROM BAYAR_BK_MASTER S WHERE BYM_TAHUN||BYM_BULAN = dt", nativeQuery = true)
-	public List<BayarBKMaster> getByrBKListMonth(String dt);
+	List<VPurchaseUnpaid> findByVbyupSupplier(String supdesc);
+	
+	//@Query(value="SELECT * FROM V_PURCHASE_UNPAID s WHERE VBYUP_SUPPLIER like '%'||:sd||'%'",nativeQuery = true)
+	//List<VPurchaseUnpaid> getListUnpaid(String sd);
 
 }

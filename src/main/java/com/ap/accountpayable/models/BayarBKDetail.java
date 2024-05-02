@@ -55,7 +55,7 @@ public class BayarBKDetail {
 	private Integer byrdRate;
 	
 	@Column (name="BYD_AMOUNT_RP")
-	private Integer byrdAmountRp;
+	private BigDecimal byrdAmountRp;
 	
 	@Column (name="BYD_DESC", length=200)
 	private String byrddesc;

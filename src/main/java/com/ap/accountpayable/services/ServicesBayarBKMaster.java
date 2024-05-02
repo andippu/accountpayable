@@ -16,8 +16,8 @@ public class ServicesBayarBKMaster {
 	@Autowired
 	IBayarBKMaster repoByrBK;
 	
-	public List<BayarBKMaster> getByrBKMaster(String dt){
-		return repoByrBK.getByrBKList(dt);
+	public List<BayarBKMaster> getByrBKMaster(String thn, String bln, String novou){
+		return repoByrBK.getByrBKList(thn, bln, novou);
 	}
 	
 	public List<BayarBKMaster> getByrBKMstMonth(String dt){
