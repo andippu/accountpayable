@@ -11,6 +11,7 @@ import com.ap.accountpayable.services.ServiceReturBeliMaster;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
@@ -27,5 +28,10 @@ public class ControllerReturBeliMaster {
 	@GetMapping("/returbeli/getrtrmonthlist")
 	public List<ReturBeliMaster> getReturBeliMonth(String dt){
 		return servRtrBlMs.getReturBeliMonth(dt);
+	}
+	
+	@GetMapping("/returbeli/getretursingle")
+	public Optional<ReturBeliMaster> getReturSingle(String remno){
+		return servRtrBlMs.getReturBeliSingle(remno);
 	}
 }

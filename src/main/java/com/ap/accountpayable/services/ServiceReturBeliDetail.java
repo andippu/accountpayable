@@ -21,4 +21,9 @@ public class ServiceReturBeliDetail {
 		return repoRtrBldtl.findByRtBlDtlNo(rtNo);
 	}
 	
+	public List<ReturBeliDetail> getRtrDtlSingle(String rtNo, String rtkb){
+		return repoRtrBldtl.findByRtBlDtlNoAndRtBlDtlKdBhn(rtNo, rtkb);
+	}
+
+	
 }

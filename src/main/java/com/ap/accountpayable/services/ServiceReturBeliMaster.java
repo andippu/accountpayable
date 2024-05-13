@@ -10,9 +10,9 @@ import jakarta.transaction.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-
 public class ServiceReturBeliMaster {
 	
 	@Autowired
@@ -25,5 +25,9 @@ public class ServiceReturBeliMaster {
 	public List<ReturBeliMaster> getReturBeliMonth(String dt){
 		return repoRtrBlMst.getReturBeliMonth(dt);
 	}
-
+	
+	
+	public Optional<ReturBeliMaster> getReturBeliSingle(String remno){
+		return repoRtrBlMst.findById(remno);
+	}
 }

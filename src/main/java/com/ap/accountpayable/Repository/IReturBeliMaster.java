@@ -18,10 +18,10 @@ import java.util.List;
 @CrossOrigin("http://localhost:4200")
 public interface IReturBeliMaster extends JpaRepository<ReturBeliMaster, String> {
 	
-	@Query(value="SELECT * FROM RETUR_BELI_MASTER s WHERE to_char(s.TTB_DATE,'dd/mm/yyyy') =:dt ", nativeQuery = true )
+	@Query(value="SELECT * FROM RETUR_BELI_MASTER s WHERE to_char(s.REM_DATE,'Mon dd yyyy') =:dt ", nativeQuery = true )
 	public List<ReturBeliMaster> getReturBeliDay(String dt);
 	
-	@Query(value="SELECT * FROM RETUR_BELI_MASTER s WHERE to_char(s.TTB_DATE,'mm/yyyy') =:dt ", nativeQuery = true )
+	@Query(value="SELECT * FROM RETUR_BELI_MASTER s WHERE to_char(s.REM_DATE,'Monyyyy') =:dt ", nativeQuery = true )
 	public List<ReturBeliMaster> getReturBeliMonth(String dt);
 	
 	

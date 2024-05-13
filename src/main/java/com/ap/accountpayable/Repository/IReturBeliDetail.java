@@ -19,5 +19,7 @@ import java.util.List;
 public interface IReturBeliDetail extends JpaRepository<ReturBeliDetail,ReturBeliDetailCompKey>  {
 	
 	public List<ReturBeliDetail> findByRtBlDtlNo(String rtNo);
-
+	
+	public List<ReturBeliDetail> findByRtBlDtlNoAndRtBlDtlKdBhn(String rtNo, String rtkb);
+	
 }

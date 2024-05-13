@@ -16,7 +16,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name= "BAYAR_BK_MASTER")
+@Table(name= "RETUR_BELI_DETAIL")
 @IdClass(ReturBeliDetailCompKey.class)
 public class ReturBeliDetail {
 	

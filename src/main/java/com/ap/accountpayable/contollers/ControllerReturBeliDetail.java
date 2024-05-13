@@ -23,5 +23,11 @@ public class ControllerReturBeliDetail {
 	public List<ReturBeliDetail> getReturBeliDay(String rtNo){
 		return servRtDtl.getReturBeliDtl(rtNo);
 	}
+	
+	@GetMapping("/returbeli/getrtrdtsingle")
+	public List<ReturBeliDetail> getRtrDtlSingle(String rtNo, String rtkb){
+		return servRtDtl.getRtrDtlSingle(rtNo, rtkb);
+	}
+
 
 }
