@@ -33,6 +33,16 @@ public class ServiceBKMaster {
 		return repoBKM.findByBbmId(bbmId);
 	}
 	
+	public List<BeliBKMaster> getBeliSplListDtl(String spl){
+		return repoBKM.getRetBeliPo(spl);
+	}
+	
+	public List<BeliBKMaster> getBeliPoListDtl(String pono){
+		return repoBKM.getRetBeliTtb(pono);
+	}
+	
+	
+	
 	@Transactional
 	public String updateBeliBKMaster (String fisik, String btf, BigDecimal bmmId) {
 	//	System.out.println("aaaaaaaaaaaaaaaaaaaaaa : "+fisik+"/"+btf+"/"+bmmId);
@@ -44,6 +54,7 @@ public class ServiceBKMaster {
 		repoBKM.save(belimas);*/
 		return "Update Successfully";
 	}
+	
 	
 	
 

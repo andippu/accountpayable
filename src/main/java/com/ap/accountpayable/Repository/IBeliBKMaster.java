@@ -27,7 +27,12 @@ public interface IBeliBKMaster extends JpaRepository<BeliBKMaster, BigDecimal> {
 			+ "	AND s.NO_PO LIKE '%'||:nopo||'%' AND s.NO_TTB LIKE '%'||:nottb||'%' AND to_char(TTB_DATE,'Mon dd yyyy') LIKE '%'||:dt||'%' AND TIPE_BARANG NOT IN ('BB','BK')", nativeQuery = true )
 	public List<BeliBKMaster> getBeliNotBK(String splcode, String nopo, String nottb, String dt);
 	
+	@Query(value="SELECT * FROM BELI_BK_MASTER s WHERE to_char(TTB_DATE,'yyyy') >= (to_char(sysdate,'yyyy')-5) and SPL_CODE=:spl ORDER BY TTB_DATE DESC, NO_PO,NO_TTB", nativeQuery = true )
+	public List<BeliBKMaster> getRetBeliPo(String spl);	
 	
+	@Query(value="SELECT * FROM BELI_BK_MASTER s WHERE NO_PO=:pono", nativeQuery = true )
+	public List<BeliBKMaster> getRetBeliTtb(String pono);	
+		
 	List<BeliBKMaster> findByBbmNoPOAndBbmNoTtb (String pono, String ttbno);
 	
 	List<BeliBKMaster> findByBbmId (BigDecimal bbmId);

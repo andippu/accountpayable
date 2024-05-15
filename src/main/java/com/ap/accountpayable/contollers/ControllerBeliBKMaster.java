@@ -38,6 +38,15 @@ public class ControllerBeliBKMaster {
 		return servBK.getBeliBKListDtl(bbmId);
 	}
 	
+	@GetMapping("/belibk/getReturPolist")
+	public List<BeliBKMaster> getBeliSplListDtl(String spl){
+		return servBK.getBeliSplListDtl(spl);
+	}
+	
+	@GetMapping("/belibk/getReturTtblist")
+	public List<BeliBKMaster>  getBeliPoListDtl(String nopo){
+		return servBK.getBeliPoListDtl(nopo);
+	}
 	
 	@GetMapping("/belibk/updatebbkm")
 	public String updateBeliBKMaster (String fisik, String btf, BigDecimal bmmId) {

@@ -21,5 +21,11 @@ public class ServiceBKDetail {
 	public List<BeliBKDetail> getBBDCU (String pono, Integer bbdno){
 		return repoBKD.findByBbdPoNoAndBbdNo(pono, bbdno);
 	}
+	
+	public List<BeliBKDetail> getRetBBDList (String pono, String ttbno, String bbcode){
+		return repoBKD.findByBbdPoNoAndBbdTtbNoAndBbdBhnCode(pono, ttbno, bbcode);
+	}
+	
+	
 
 }

@@ -27,5 +27,10 @@ public class ControllerBeliBKDetail {
 		return servBBD.getBBDCU(pono, bbdno);
 	}
 	
+	@GetMapping("/belibk/getretbbkdList")
+	public List<BeliBKDetail> getReturBBDList(String pono, String ttbno, String bbcode) {
+		return servBBD.getRetBBDList(pono, ttbno, bbcode);
+	}
+	
 
 }

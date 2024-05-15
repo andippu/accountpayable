@@ -18,6 +18,8 @@ public interface IBeliBKDetail  extends JpaRepository<BeliBKDetail,BeliBKDetailC
 	
 	List<BeliBKDetail> findByBbdPoNoAndBbdTtbNo(String pono, String ttbno);
 	
+	List<BeliBKDetail> findByBbdPoNoAndBbdTtbNoAndBbdBhnCode(String pono, String ttbno, String bbcode);
+	
 	List<BeliBKDetail> findByBbdPoNoAndBbdNo(String pono, Integer bbdno);
 
 }
