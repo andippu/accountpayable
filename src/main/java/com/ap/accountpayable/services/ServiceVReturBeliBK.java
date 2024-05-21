@@ -21,5 +21,9 @@ public class ServiceVReturBeliBK {
 	public List<VReturBeliBK> getVReturList(String spl){
 		return repovret.findByVretbbksplcode(spl);
 	}
+	
+	public List<VReturBeliBK> getVReturPoList(String nopo){
+		return repovret.findByVretbbkPoNo(nopo);
+	}
 
 }

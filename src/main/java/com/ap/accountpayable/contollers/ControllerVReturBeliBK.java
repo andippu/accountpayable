@@ -24,4 +24,9 @@ public class ControllerVReturBeliBK {
 	public List<VReturBeliBK> getVReturList(String spl){
 		return servret.getVReturList(spl);
 	}
+	
+	@GetMapping("/vreturbelibk/getvreturbelipolist")
+	public List<VReturBeliBK> getVReturPoList(String nopo){
+		return servret.getVReturPoList(nopo);
+	}
 }

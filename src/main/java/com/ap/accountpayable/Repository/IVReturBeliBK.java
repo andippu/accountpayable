@@ -21,4 +21,6 @@ import java.util.List;
 public interface IVReturBeliBK extends JpaRepository<VReturBeliBK,VReturBeliBKCompKey>{
 
 	 public List<VReturBeliBK> findByVretbbksplcode(String spl);
+	 
+	 public List<VReturBeliBK> findByVretbbkPoNo(String pono);
 }
