@@ -22,7 +22,7 @@ public class BeliBkCashDetail {
 	
 	 @Id
 	 @Column(name="BBDC_NO")
-	 private Integer bbdCNo;
+	 private BigDecimal bbdCNo;
 	 
 	 @Column(name="NO_PO", length=50)
 	 private String bbdCPoNo;
@@ -31,96 +31,96 @@ public class BeliBkCashDetail {
 	 private String bbdCTtbNo;
 	 
 	 @Column(name="TTB_DATE", length=50)
-	 private Date bbdTtbDate;
+	 private Date bbdCTtbDate;
 	 
 	 @Column(name="NO_INVOICE", length=50)
-	 private String bbdInvNo;
+	 private String bbdCInvNo;
 	 
 	 @Column(name="NO_FKT_PJK", length=50)
-	 private String bbdFktPjk;
+	 private String bbdCFktPjk;
 	 
 	 @Column(name="BAHAN_CODE", length=12)
-	 private String bbdBhnCode;
+	 private String bbdCBhnCode;
 	 
 	 @Column(name="BAHAN_DESC", length=200)
-	 private String bbdBhnDesc;
+	 private String bbdCBhnDesc;
 	 
 	 @Column(name="JENIS_BAHAN", length=2)
-	 private String bbdJenisBhn;
+	 private String bbdCJenisBhn;
 	 
 	 @Column(name="QTY")
-	 private Integer bbdQty;
+	 private Integer bbdCQty;
 	 
 	 @Column(name="PRICE")
-	 private BigDecimal bbdPrice;
+	 private BigDecimal bbdCPrice;
 	 
 	 @Column(name="DISC")
-	 private BigDecimal bbdDisc;
+	 private BigDecimal bbdCDisc;
 	 
 	 @Column(name="TOTAL_KURS")
-	 private BigDecimal bbdTtlKurs;
+	 private BigDecimal bbdCTtlKurs;
 	 
 	 @Column(name="KURS_CODE", length=5)
-	 private String bbdKursCode;
+	 private String bbdCKursCode;
 	 
 	 @Column(name="KURS")
-	 private Integer bbdKurs;
+	 private Integer bbdCKurs;
 	 
 	 @Column(name="TOTAL_RP")
-	 private BigDecimal bbdTotalRp;
+	 private BigDecimal bbdCTotalRp;
 	 
 	 @Column(name="PPN_RP")
-	 private BigDecimal bbdPpnRp;
+	 private BigDecimal bbdCPpnRp;
 	 
 	 @Column(name="GRANT_TOTAL")
-	 private BigDecimal bbdGrantTotal;
+	 private BigDecimal bbdCGrantTotal;
 	 
 	 @Column(name="BIAYA_TMB")
-	 private BigDecimal bbdBiayaTmb;
+	 private BigDecimal bbdCBiayaTmb;
 	 
 	 @Column(name="KURS_RATE_BELI")
-	 private Integer bbdKursRateBeli;
+	 private Integer bbdCKursRateBeli;
 	 
 	 @Column(name="QTY_PO")
-	 private Integer bbdQtyPo;
+	 private Integer bbdCQtyPo;
 	 
 	 @Column(name="CEK_FISIK", length=1)
-	 private String bbdCekFisik;
+	 private String bbdCCekFisik;
 	 
 	 @Column(name="POSTING", length=1)
-	 private String bbdPosting;
+	 private String bbdCPosting;
 	 
 	 @Column(name="LUNAS", length=1)
-	 private String bbdLunas;
+	 private String bbdCLunas;
 	 
 	 @Column(name="CREATED_USER", length=10)
-	 private String bbdCreateUser;
+	 private String bbdCCreateUser;
 	 
 	 @Column(name="UPDATED_BY", length=10)
 	 private String bbdUpdateUser;
 	 
 	 @Column(name="CREATED_DATE")
-	 private Date bbdCreateDate;
+	 private Date bbdCCreateDate;
 	 
 	 @Column(name="UPDATED_DATE")
-	 private Date bbdUpdateDate;
+	 private Date bbdCUpdateDate;
 	 
 	 @Column(name="BTF", length=1)
-	 private String bbdBtf;
+	 private String bbdCBtf;
 	 
 	 @Column(name="UNIT", length=10)
-	 private String bbdUnit;
+	 private String bbdCUnit;
 	 
 	 @Column(name="TGL_FKT_PJK")
-	 private Date bbdTglFktPjk;
+	 private Date bbdCTglFktPjk;
 	
 	 @Column(name="UNITPO", length=20)
-	 private String bbdUnitPo;
+	 private String bbdCUnitPo;
 	 
 	 @Column(name="TGL_INPUT")
-	 private Date bbdTglInput;
+	 private Date bbdCTglInput;
 	 
 	 @Column(name="KETERANGAN", length=300)
-	 private String bbdKeterangan;
+	 private String bbdCKeterangan;
 
 }

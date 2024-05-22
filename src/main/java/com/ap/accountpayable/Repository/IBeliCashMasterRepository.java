@@ -16,14 +16,14 @@ import java.math.BigInteger;
 import java.util.List;
 
 @Repository
-public interface IBeliBkCashMasterRepository extends JpaRepository<BeliBkCashMaster, BigDecimal>{
+public interface IBeliCashMasterRepository extends JpaRepository<BeliBkCashMaster, BigDecimal>{
 	
 	@Query(value="SELECT * FROM BELI_BK_MASTER_CS s WHERE s.POSTING = 'N' AND s.SPL_CODE LIKE '%'||:splcode||'%'"
-			+ "	AND s.NO_PO LIKE '%'||:nopo||'%' AND s.NO_TTB LIKE '%'||:nottb||'%' AND to_char(TTB_DATE,'Mon dd yyyy') LIKE '%'||:dt||'%' AND TIPE_BARANG IN ('BB','BK')" , nativeQuery = true )
+			+ "	AND s.NO_PO LIKE '%'||:nopo||'%' AND s.NO_TTB LIKE '%'||:nottb||'%' AND to_char(TTB_DATE,'Mon dd yyyy') LIKE '%'||:dt||'%'" , nativeQuery = true )
 public List<BeliBkCashMaster> getBeliBKCash(String splcode, String nopo, String nottb, String dt);
 
 @Query(value="SELECT * FROM BELI_BK_MASTER_CS s WHERE s.POSTING = 'N' AND s.SPL_CODE LIKE '%'||:splcode||'%'"
-		+ "	AND s.NO_PO LIKE '%'||:nopo||'%' AND s.NO_TTB LIKE '%'||:nottb||'%' AND to_char(TTB_DATE,'Mon dd yyyy') LIKE '%'||:dt||'%' AND TIPE_BARANG NOT IN ('BB','BK')", nativeQuery = true )
+		+ "	AND s.NO_PO LIKE '%'||:nopo||'%' AND s.NO_TTB LIKE '%'||:nottb||'%' AND to_char(TTB_DATE,'Mon dd yyyy') LIKE '%'||:dt||'%'", nativeQuery = true )
 public List<BeliBkCashMaster> getBeliNotBKCash(String splcode, String nopo, String nottb, String dt);
 
 @Query(value="SELECT * FROM BELI_BK_MASTER_CS s WHERE to_char(TTB_DATE,'yyyy') >= (to_char(sysdate,'yyyy')-5) and SPL_CODE=:spl ORDER BY TTB_DATE DESC, NO_PO,NO_TTB", nativeQuery = true )

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ap.accountpayable.Repository.IBeliBKMaster;
-import com.ap.accountpayable.Repository.IBeliBkCashMasterRepository;
+import com.ap.accountpayable.Repository.IBeliCashMasterRepository;
 import com.ap.accountpayable.models.BeliBKMaster;
 import com.ap.accountpayable.models.BeliBkCashMaster;
 
@@ -14,9 +14,9 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Service
-public class ServiceBeliBKCashMaster {
+public class ServiceBeliCashMaster {
 	@Autowired
-	IBeliBkCashMasterRepository repoblcmst;
+	IBeliCashMasterRepository repoblcmst;
 	
 	public List<BeliBkCashMaster> getBeliBKListCash(String splcode, String nopo, String nottb,  String dt){
 		return repoblcmst.getBeliBKCash(splcode, nopo, nottb, dt);

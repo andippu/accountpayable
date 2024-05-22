@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ap.accountpayable.models.BeliBKMaster;
 import com.ap.accountpayable.models.BeliBkCashMaster;
-import com.ap.accountpayable.services.ServiceBeliBKCashMaster;
+import com.ap.accountpayable.services.ServiceBeliCashMaster;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
-public class ControllerBeliBkCashMaster {
+public class ControllerBeliCashMaster {
 	@Autowired
-	ServiceBeliBKCashMaster servBlC;
+	ServiceBeliCashMaster servBlC;
 	
 	@GetMapping("/belibk/getbbkmlistcash")
 	public List<BeliBkCashMaster> getBeliBKList(String splcode, String nopo, String nottb, String dt){
