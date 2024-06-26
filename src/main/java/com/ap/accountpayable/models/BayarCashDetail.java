@@ -17,9 +17,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name= "BAYAR_BK_DETAIL")
-public class BayarBKDetail {
-	
+@Table(name= "BAYAR_BK_DETAIL_CS")
+public class BayarCashDetail {
 	@Id
 	@Column (name="BYD_NO")
 	private BigDecimal byrdNo;
@@ -89,18 +88,6 @@ public class BayarBKDetail {
 	
 	@Column (name="BYD_SELISIH_KURS")
 	private Integer byrdselisihKurs;
-	
-	@Column (name="NO_RETUR", length=50)
-	private String byrdNoRetur;
-	
-	@Column (name="TOTAL_RETUR")
-	private BigDecimal byrdTtlRetur;
-	
-	@Column (name="QTY_RETUR")
-	private Integer byrdRetur;
-	
-	@Column (name="BYD_REM_NO", length=100)
-	private String byrdNorem;      
 
-	
+
 }

@@ -31,4 +31,5 @@ public class ControllerBeliCashDetail {
 	public List<BeliBkCashDetail> getReturBBDList(String pono, String ttbno, String bbcode) {
 		return servbcash.getRetBBDList(pono, ttbno, bbcode);
 	}
+	
 }
