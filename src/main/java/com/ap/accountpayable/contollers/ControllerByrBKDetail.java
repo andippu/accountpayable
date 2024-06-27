@@ -24,9 +24,9 @@ public class ControllerByrBKDetail {
 		return servByrDtl.getByrBKList(thn, bln, no);
 	}
 	
-	@GetMapping("/bayarbkdtl/getbbyrbkdtsingle")
-	public List<BayarBKDetail> getByrBKSingle(BigDecimal byrno){
-		return servByrDtl.getByrBKSingle(byrno);
+	@GetMapping("/bayarbkdtl/jurnalbayarbeli")
+	public String execJurnalBayarBeli(String p_bymtahun , String p_bymbulan , String p_bymno , BigDecimal p_bymamoun){
+		return servByrDtl.execJurnalBayarBeli(p_bymtahun, p_bymbulan, p_bymno, p_bymamoun);
 	}
 	
 	@PostMapping("/bayarbkdtl/saveupdatebyrbkdtl")

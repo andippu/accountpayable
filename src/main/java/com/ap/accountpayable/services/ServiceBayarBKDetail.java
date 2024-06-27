@@ -20,8 +20,8 @@ public class ServiceBayarBKDetail {
 		return repoByDtl.findByByrdBymTahunAndByrdBymBulanAndByrdBymNo(thn, bln, no);
 	}
 	
-	public List<BayarBKDetail> getByrBKSingle(BigDecimal byrno){
-		return repoByDtl.findByByrdNo(byrno);
+	public String execJurnalBayarBeli(String p_bymtahun , String p_bymbulan , String p_bymno , BigDecimal p_bymamoun){
+		return repoByDtl.execJurnalBayarBeli(p_bymtahun, p_bymbulan, p_bymno, p_bymamoun);
 	}
 	
 	public String saveUpdateBkDtl(BayarBKDetail data) {

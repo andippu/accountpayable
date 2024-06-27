@@ -18,11 +18,16 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name= "BAYAR_BK_DETAIL")
+@IdClass(BayarBKDetailCompKey.class)
 public class BayarBKDetail {
 	
 	@Id
-	@Column (name="BYD_NO")
-	private BigDecimal byrdNo;
+	@Column (name="BYD_NO_TTB", length=50)
+	private String byrdTtbNo;
+	
+	@Id
+	@Column (name="BYD_NO_PO", length=30)
+	private String byrdPoNo;
 	
 	@Column (name="BYD_BYM_TAHUN", length=4)
 	private String byrdBymTahun;
@@ -38,9 +43,6 @@ public class BayarBKDetail {
 	
 	@Column (name="BYD_SPL_CODE", length=6)
 	private String byrdSplCode;
-	
-	@Column (name="BYD_NO_PO", length=30)
-	private String byrdPoNo;
 	
 	@Column (name="BYD_PO_DATE")
 	private Date byrdPoDate;
@@ -71,9 +73,6 @@ public class BayarBKDetail {
 	
 	@Column (name="DOWNPAYMENT_STATUS", length=1)
 	private String byrdDpStatus;
-	
-	@Column (name="BYD_NO_TTB", length=50)
-	private String byrdTtbNo;
 	
 	@Column (name="BYD_LAIN")
 	private BigDecimal byrdLain;
