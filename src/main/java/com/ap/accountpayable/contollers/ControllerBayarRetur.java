@@ -14,17 +14,23 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 public class ControllerBayarRetur {
 	@Autowired
 	ServiceBayarRetur servByRetur;
 	
 	@GetMapping("/byretur/getbyrretrlist")
-	public List<BayarRetur> getBayarReturList(String thn, String bln, String No){
-		return servByRetur.getBayarReturList(thn, bln, No);
+	public List<BayarRetur> getBayarReturList(String thn, String bln, String No, Integer spl){
+		return servByRetur.getBayarReturList(thn, bln, No, spl);
 	}
 	
 	@PostMapping("/byretur/addupdatebyretur")	
 	public String saveUpdateBayarRetur(@RequestBody BayarRetur br) {
 		return servByRetur.saveUpdateBayarRetur(br);
+	}
+	
+	@GetMapping("/byretur/execupdatereturbeli")	
+	public String execUpdate(String p_trans, String p_remno)  {
+		return servByRetur.execUpdate(p_trans, p_remno);
 	}
 }
