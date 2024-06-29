@@ -33,5 +33,10 @@ public class ControllerByrBkMaster {
 	public String saveUpdateBk(@RequestBody BayarBKMaster data) {
 		return servByrBK.saveUpdateByrBKMaster(data);		
 	}
+	
+	@GetMapping("/bayarbk/execbayarjurnal")
+	public String execPBayarJurnal(String thn , String bln , String no , BigDecimal amt) {
+		return servByrBK.execPBayarJurnal(thn, bln, no, amt);		
+	}
 
 }

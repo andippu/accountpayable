@@ -52,7 +52,7 @@ public class ServiceBKMaster {
 			belimas.setBbmBTF(btf);
 		
 		repoBKM.save(belimas);*/
-		return "Update Successfully";
+		return "Submit Successfully";
 	}
 	
 	

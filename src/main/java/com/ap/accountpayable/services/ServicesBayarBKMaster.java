@@ -28,4 +28,8 @@ public class ServicesBayarBKMaster {
 		repoByrBK.save(data);
 		return "Submit Successfully";
 	}
+	
+	public String execPBayarJurnal(String p_bymtahun , String p_bymbulan , String p_bymno , BigDecimal p_bymamount) {
+		return repoByrBK.execPBayarJurnal(p_bymtahun, p_bymbulan, p_bymno, p_bymamount);		
+	}
 }
