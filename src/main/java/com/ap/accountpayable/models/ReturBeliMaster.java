@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,12 +26,14 @@ public class ReturBeliMaster {
 	 private String rtBlNo;
 	 
 	 @Column (name="REM_DATE" )
+	 @JsonFormat(pattern="dd-MM-yyyy")
 	 private Date rtBlDate;
 	 
 	 @Column (name="REM_SPL_ID" )
 	 private Integer rtBlSplCode;
 	 
 	 @Column (name="REM_COMPLAIN_DATE" )
+	 @JsonFormat(pattern="dd-MM-yyyy")
 	 private Date rtBlComplainDate;
 	 
 	 @Column(name="REM_COMPLAIN_NO", length=50)

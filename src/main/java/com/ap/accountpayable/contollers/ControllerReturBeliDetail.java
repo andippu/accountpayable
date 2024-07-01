@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ap.accountpayable.models.ReturBeliDetail;
+import com.ap.accountpayable.models.ReturBeliMaster;
 import com.ap.accountpayable.services.ServiceReturBeliDetail;
 
 import java.math.BigDecimal;
@@ -27,6 +28,11 @@ public class ControllerReturBeliDetail {
 	@GetMapping("/returbeli/getrtrdtsingle")
 	public List<ReturBeliDetail> getRtrDtlSingle(String rtNo, String rtkb){
 		return servRtDtl.getRtrDtlSingle(rtNo, rtkb);
+	}
+	
+	@PostMapping("/returbeli/saveupdReturDetail")
+	public String saveUpdateReturDetail(@RequestBody ReturBeliDetail data) {
+		return servRtDtl.saveUpdateReturDetail(data);
 	}
 
 

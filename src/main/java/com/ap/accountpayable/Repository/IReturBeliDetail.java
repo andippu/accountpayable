@@ -16,7 +16,7 @@ import java.util.List;
 
 @Repository
 @CrossOrigin("http://localhost:4200")
-public interface IReturBeliDetail extends JpaRepository<ReturBeliDetail,ReturBeliDetailCompKey>  {
+public interface IReturBeliDetail extends JpaRepository<ReturBeliDetail,String>  {
 	
 	public List<ReturBeliDetail> findByRtBlDtlNo(String rtNo);
 	

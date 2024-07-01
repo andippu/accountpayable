@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ap.accountpayable.models.BayarBKMaster;
 import com.ap.accountpayable.models.ReturBeliMaster;
 import com.ap.accountpayable.services.ServiceReturBeliMaster;
 
@@ -33,5 +35,10 @@ public class ControllerReturBeliMaster {
 	@GetMapping("/returbeli/getretursingle")
 	public Optional<ReturBeliMaster> getReturSingle(String remno){
 		return servRtrBlMs.getReturBeliSingle(remno);
+	}
+	
+	@PostMapping("/returbeli/saveupdReturMaster")
+	public String saveUpdateReturMaster(@RequestBody ReturBeliMaster data) {
+		return servRtrBlMs.saveUpdateReturMaster(data);
 	}
 }
