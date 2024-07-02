@@ -3,6 +3,7 @@ package com.ap.accountpayable.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,6 +25,8 @@ public interface IReturBeliMaster extends JpaRepository<ReturBeliMaster, String>
 	@Query(value="SELECT * FROM RETUR_BELI_MASTER s WHERE to_char(s.REM_DATE,'Monyyyy') =:dt ", nativeQuery = true )
 	public List<ReturBeliMaster> getReturBeliMonth(String dt);
 	
+	@Procedure(procedureName ="P_RETUR_BK_JURNAL")
+	public String execPReturJurnal(String p_thn , String p_bln , String p_no );
 	
 
 }

@@ -41,4 +41,9 @@ public class ControllerReturBeliMaster {
 	public String saveUpdateReturMaster(@RequestBody ReturBeliMaster data) {
 		return servRtrBlMs.saveUpdateReturMaster(data);
 	}
+	
+	@GetMapping("/returbeli/execpretrjurnal")
+	public String ExecPReturJurnal(String p_thn , String p_bln , String p_no) {
+		return servRtrBlMs.ExecPReturJurnal(p_thn, p_bln, p_no);
+	}
 }

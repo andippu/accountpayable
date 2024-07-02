@@ -36,4 +36,8 @@ public class ServiceReturBeliMaster {
 		repoRtrBlMst.save(rbm);
 		return "Submit Successfully";
 	}
+	
+	public String ExecPReturJurnal(String p_thn , String p_bln , String p_no) {
+		return repoRtrBlMst.execPReturJurnal(p_thn, p_bln, p_no);
+	}
 }
