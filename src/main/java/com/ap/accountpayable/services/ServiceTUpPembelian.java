@@ -33,6 +33,16 @@ public class ServiceTUpPembelian {
 	 
 	 public String insTUpbeli (TUploadPembelian data){
 		 reporitup.save(data);
+		 String temp=reporitup.execuploadbeli();
+		 System.out.println("temp :"+temp);
 	       return "Upload CSV Success";
 	    }
+	 
+	 public String execPTUpBeli() {
+		 return reporitup.execuploadbeli();
+	 }
+	 
+	 public String execProseBeli() {
+		 return reporitup.execProsesBeli();
+	 }
 }

@@ -28,13 +28,23 @@ public class ControllerTUploadPembelian {
 	}
 	
 	 @GetMapping("/tupbeli/checktupbeli")
-	    public String checkTUpBeli() {
+	 public String checkTUpBeli() {
 		 sertup.checkTUpPembelian();
-	        return "Check and delete Temp Faktur performed";
+	     return "Check and delete Temp Faktur performed";
+	 }
+	 
+	 @GetMapping("/tupbeli/exectupbeli")
+	 public String execTUpBeli() {
+		return sertup.execPTUpBeli();
+	 }
+	 
+	 @GetMapping("/tupbeli/execprosesbeli")
+	 public String execProsesBeli() {
+		return sertup.execProseBeli();
 	 }
 	 
 	 @PostMapping("/tupbeli/addtupbeli")	  
-	    public String insTempFaktur ( @RequestBody TUploadPembelian data) throws IOException {	     
+	 public String insTempFaktur ( @RequestBody TUploadPembelian data) throws IOException {	     
 	      return sertup.insTUpbeli(data);
-	    }
+	  }
 }

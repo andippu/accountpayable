@@ -17,5 +17,12 @@ import java.util.List;
 @Repository
 @CrossOrigin("http://localhost:4200")
 public interface ITUploadPembelian  extends JpaRepository<TUploadPembelian, String>{
+	
+	@Procedure(procedureName ="P_T_UPLOAD_PEMBELIAN")
+	public String execuploadbeli();
+	
+	@Procedure(procedureName ="PROSES_PEMBELIAN")
+	public String execProsesBeli();
 
+	
 }
