@@ -5,11 +5,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ap.accountpayable.models.TUploadPembelian;
 import com.ap.accountpayable.services.ServiceTUpPembelian;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -24,4 +26,15 @@ public class ControllerTUploadPembelian {
 	public List<TUploadPembelian> getTUBList(){
 		return sertup.getTUBList();
 	}
+	
+	 @GetMapping("/tupbeli/checktupbeli")
+	    public String checkTUpBeli() {
+		 sertup.checkTUpPembelian();
+	        return "Check and delete Temp Faktur performed";
+	 }
+	 
+	 @PostMapping("/tupbeli/addtupbeli")	  
+	    public String insTempFaktur ( @RequestBody TUploadPembelian data) throws IOException {	     
+	      return sertup.insTUpbeli(data);
+	    }
 }

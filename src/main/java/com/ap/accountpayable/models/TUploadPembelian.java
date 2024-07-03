@@ -54,10 +54,35 @@ public class TUploadPembelian {
 	 @Column(name="SPL_NAME",length=100)                  
 	 private String tublSplName;                          
 	                                                      
-	 @Column(name="QTY_PO")                               
-	 private BigDecimal tublQtyPo;                        
+	 @Column(name="QTY_PO",length=20)                               
+	 private String tublQtyPo;                        
 	                                                      
-	 @Column(name="QTY_TTB")                              
-	 private BigDecimal tublQtyTtb;                       
+	 @Column(name="QTY_TTB",length=20)                              
+	 private String tublQtyTtb;   
+	 
+	 @Column(name="NO_SURAT_JALAN",length=30)                  
+	 private String tublSuratjln;     
+	 
+	 @Column(name="MATA_UANG",length=30)                  
+	 private String tublMataUang;   
+	 
+	 @Column(name="HARGA_SATUAN",length=20)                              
+	 private String tublHrgSatuan;   
+	 
+	 @Column(name="PPN",length=20)                              
+	 private String tublPpn;   
+	 
+	 @Column(name="TOP",length=30)                              
+	 private String tublTop; 
+	 
+	 @Column(name="PO_SEQID",length=20)                              
+	 private String tublPoSeId; 
+	 
+	 @Column(name="NAMA_BAHAN",length=100)                              
+	 private String tublNamaBahan; 
+	 
+	 @Column(name="DESKRIPSI",length=200)                              
+	 private String tublDeskripsi; 
+	 	 
                                                        
 }                                                      

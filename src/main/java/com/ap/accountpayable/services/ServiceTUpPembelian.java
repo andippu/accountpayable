@@ -19,5 +19,20 @@ public class ServiceTUpPembelian {
 	public List<TUploadPembelian> getTUBList(){
 		return reporitup.findAll();
 	}
+	
+	 public void checkTUpPembelian() {
+	        List<TUploadPembelian> tup = reporitup.findAll(); // You can use findBy<YourField> if needed
 
+	        if (!tup.isEmpty()) {
+	        	reporitup.deleteAll();
+	            System.out.println("Data deleted successfully");
+	        } else {
+	            System.out.println("No data found in the table");
+	        }
+	    }
+	 
+	 public String insTUpbeli (TUploadPembelian data){
+		 reporitup.save(data);
+	       return "Upload CSV Success";
+	    }
 }
