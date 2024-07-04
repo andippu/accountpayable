@@ -23,6 +23,9 @@ public interface ITUploadPembelian  extends JpaRepository<TUploadPembelian, Stri
 	
 	@Procedure(procedureName ="PROSES_PEMBELIAN")
 	public String execProsesBeli();
+	
+	@Procedure(procedureName ="PROSES_PEMBELIAN_LAIN")
+	public String execProsesBeliLain();
 
 	
 }

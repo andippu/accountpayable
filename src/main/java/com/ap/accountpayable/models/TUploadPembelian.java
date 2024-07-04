@@ -20,14 +20,14 @@ import lombok.NoArgsConstructor;
 public class TUploadPembelian {                        
 	                                                      
 	 @Id                                                  
-	 @Column(name="NO_TTB",length=30,  nullable = false)  
+	 @Column(name="NO_TTB",length=50,  nullable = false)  
 	 private String tublNoTtb;                            
 	                                                      
 	 @Id                                                  
 	 @Column(name="KD_BAHAN",length=10,  nullable = false)
 	 private String tublKdBahan;                          
 	                                                      
-	 @Column(name="NO_PO",length=30)                      
+	 @Column(name="NO_PO",length=50)                      
 	 private String tublNoPo;                             
 	                                                      
 	 @Column(name="TGL_TTB",length=20)                    

@@ -45,4 +45,8 @@ public class ServiceTUpPembelian {
 	 public String execProseBeli() {
 		 return reporitup.execProsesBeli();
 	 }
+	 
+	 public String execProseBeliLain() {
+		 return reporitup.execProsesBeliLain();
+	 }
 }

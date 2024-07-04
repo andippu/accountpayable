@@ -13,7 +13,9 @@ import jakarta.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class BeliBKDetailCompKey implements Serializable{
-	private Integer bbdNo;
-	private String bbdPoNo;
+public class BeliBKMasterCompKey {
+	
+	private String bbmNoPO;	 
+
+	 private String bbmNoTtb;
 }

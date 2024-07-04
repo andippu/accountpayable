@@ -3,6 +3,7 @@ package com.ap.accountpayable.models;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,15 +17,14 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name= "BELI_BK_MASTER")
+@IdClass(BeliBKMasterCompKey.class)
 public class BeliBKMaster {
 	 @Id
-	 @Column(name="BLBKMS_ID")
-	 private BigDecimal bbmId;
-	 
 	 @Column (name="NO_PO" ,length=50, nullable = false)
 	 private String bbmNoPO;
 	 
-	 @Column (name="NO_TTB" ,length=30, nullable = false)
+	 @Id
+	 @Column (name="NO_TTB" ,length=50, nullable = false)
 	 private String bbmNoTtb;
 	 
 	 @Column (name="SPL_CODE" ,length=6, nullable = false)

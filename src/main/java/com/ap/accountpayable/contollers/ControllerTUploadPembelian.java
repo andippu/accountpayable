@@ -43,6 +43,11 @@ public class ControllerTUploadPembelian {
 		return sertup.execProseBeli();
 	 }
 	 
+	 @GetMapping("/tupbeli/execprosesbelilain")
+	 public String execProsesBeliLain() {
+		return sertup.execProseBeliLain();
+	 }
+	 
 	 @PostMapping("/tupbeli/addtupbeli")	  
 	 public String insTempFaktur ( @RequestBody TUploadPembelian data) throws IOException {	     
 	      return sertup.insTUpbeli(data);

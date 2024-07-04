@@ -33,10 +33,10 @@ public class ControllerBeliBKMaster {
 		return servBK.getBKMCU(pono, ttbno);
 	}
 	
-	@GetMapping("/belibk/getbbkmlistdtl")
-	public List<BeliBKMaster> getBeliBKListDtl(BigDecimal bbmId){
-		return servBK.getBeliBKListDtl(bbmId);
-	}
+	//@GetMapping("/belibk/getbbkmlistdtl")
+//	public List<BeliBKMaster> getBeliBKListDtl(BigDecimal bbmId){
+		//return servBK.getBeliBKListDtl(bbmId);
+	//}
 	
 	@GetMapping("/belibk/getReturPolist")
 	public List<BeliBKMaster> getBeliSplListDtl(String spl){
@@ -49,11 +49,9 @@ public class ControllerBeliBKMaster {
 	}
 	
 	@GetMapping("/belibk/updatebbkm")
-	public String updateBeliBKMaster (String fisik, String btf, BigDecimal bmmId) {
-		return servBK.updateBeliBKMaster(fisik, btf, bmmId);
-		
+	public String updateBeliBKMaster (String fisik, String btf, String bmmpo, String bmmttb) {
+		return servBK.updateBeliBKMaster(fisik, btf, bmmpo, bmmttb);		
 	}
-	
 	
 
 }

@@ -18,14 +18,13 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name= "BELI_BK_DETAIL")
-@IdClass(BeliBKDetailCompKey.class)
 public class BeliBKDetail {
 	
 	 @Id
 	 @Column(name="NO_BBD")
-	 private Integer bbdNo;
+	 private BigDecimal bbdNo;
 	 
-	 @Id
+	 
 	 @Column(name="NO_PO", length=50)
 	 private String bbdPoNo;
 	 

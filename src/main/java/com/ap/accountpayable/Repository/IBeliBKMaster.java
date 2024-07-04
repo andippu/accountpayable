@@ -35,11 +35,11 @@ public interface IBeliBKMaster extends JpaRepository<BeliBKMaster, BigDecimal> {
 		
 	List<BeliBKMaster> findByBbmNoPOAndBbmNoTtb (String pono, String ttbno);
 	
-	List<BeliBKMaster> findByBbmId (BigDecimal bbmId);
+	//List<BeliBKMaster> findByBbmId (BigDecimal bbmId);
 	
 	@Modifying
-	@Query("update BeliBKMaster u set u.bbmCekFisik = :fisik, u.bbmBTF = :btf where u.bbmId = :bbmid")
-	void updateBBKM(@Param(value = "fisik") String fisik, @Param(value = "btf") String btf, @Param(value = "bbmid") BigDecimal bbmid);
+	@Query("update BeliBKMaster u set u.bbmCekFisik = :fisik, u.bbmBTF = :btf where u.bbmNoPO = :bbmpo and bbmNoTtb = :bbmttb")
+	void updateBBKM(@Param(value = "fisik") String fisik, @Param(value = "btf") String btf, @Param(value = "bbmpo") String bbmpo,@Param(value = "bbmttb") String bbmttb);
 	
 
 
