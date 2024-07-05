@@ -18,7 +18,7 @@ public class ControllerVBeliBK {
 	@Autowired
 	ServiceVBeliBK servVBBK;
 	
-	@GetMapping("/vbelibk/getbbktotal")
+	@GetMapping("/pboto/getvtupolist")
 	public List<VBeliBK> getBeliBKTotal (String pono, String ttbno){
 		return servVBBK.getBeliBKTotal(pono, ttbno);
 	}

@@ -49,7 +49,7 @@ public class ControllerTUploadPembelian {
 	 }
 	 
 	 @PostMapping("/tupbeli/addtupbeli")	  
-	 public String insTempFaktur ( @RequestBody TUploadPembelian data) throws IOException {	     
+	 public String insTUpbeli ( @RequestBody TUploadPembelian data) throws IOException {	     
 	      return sertup.insTUpbeli(data);
 	  }
 }

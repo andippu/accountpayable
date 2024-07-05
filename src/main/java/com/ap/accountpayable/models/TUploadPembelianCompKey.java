@@ -13,7 +13,7 @@ import jakarta.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class TUploadPembelianCompKey {
+public class TUploadPembelianCompKey implements Serializable {
 	
 	 private String tublNoTtb;                          
 	 private String tublKdBahan;
