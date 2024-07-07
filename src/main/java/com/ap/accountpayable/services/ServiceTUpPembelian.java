@@ -16,7 +16,9 @@ public class ServiceTUpPembelian {
 	@Autowired
 	ITUploadPembelian reporitup;
 	
-	public List<TUploadPembelian> getTUBList(){
+	public List<TUploadPembelian> getTUBList(String type){
+		String temp=reporitup.execuploadbeli(type);
+		System.out.println("temp :"+temp);
 		return reporitup.findAll();
 	}
 	
@@ -33,13 +35,13 @@ public class ServiceTUpPembelian {
 	 
 	 public String insTUpbeli (TUploadPembelian data){
 		 reporitup.save(data);
-		 String temp=reporitup.execuploadbeli();
-		 System.out.println("temp :"+temp);
+		// String temp=reporitup.execuploadbeli(type);
+		// System.out.println("temp :"+temp);
 	       return "Upload CSV Success";
 	    }
 	 
-	 public String execPTUpBeli() {
-		 return reporitup.execuploadbeli();
+	 public String execPTUpBeli(String type) {
+		 return reporitup.execuploadbeli(type);
 	 }
 	 
 	 public String execProseBeli() {

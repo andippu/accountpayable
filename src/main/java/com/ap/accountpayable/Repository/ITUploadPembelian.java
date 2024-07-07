@@ -19,7 +19,7 @@ import java.util.List;
 public interface ITUploadPembelian  extends JpaRepository<TUploadPembelian, String>{
 	
 	@Procedure(procedureName ="P_T_UPLOAD_PEMBELIAN")
-	public String execuploadbeli();
+	public String execuploadbeli(String type);
 	
 	@Procedure(procedureName ="PROSES_PEMBELIAN")
 	public String execProsesBeli();

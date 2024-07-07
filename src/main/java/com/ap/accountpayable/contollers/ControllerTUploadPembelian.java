@@ -23,8 +23,8 @@ public class ControllerTUploadPembelian {
 	ServiceTUpPembelian sertup;
 	
 	@GetMapping("/tupbeli/getupbllist")
-	public List<TUploadPembelian> getTUBList(){
-		return sertup.getTUBList();
+	public List<TUploadPembelian> getTUBList(String type){		
+		return sertup.getTUBList(type);
 	}
 	
 	 @GetMapping("/tupbeli/checktupbeli")
@@ -34,8 +34,8 @@ public class ControllerTUploadPembelian {
 	 }
 	 
 	 @GetMapping("/tupbeli/exectupbeli")
-	 public String execTUpBeli() {
-		return sertup.execPTUpBeli();
+	 public String execTUpBeli(String type) {
+		return sertup.execPTUpBeli(type);
 	 }
 	 
 	 @GetMapping("/tupbeli/execprosesbeli")
