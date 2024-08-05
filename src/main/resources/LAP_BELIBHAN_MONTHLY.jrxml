@@ -4,73 +4,60 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="RV_DB"/>
 	<parameter name="period" class="java.lang.String"/>
-	<queryString language="SQL">
-		<![CDATA[SELECT  * FROM RPT_LAP_BELIBAHAN_MONTHLY]]>
-	</queryString>
-	<field name="RLBM_TRANSTYPE" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="RLBM_TRANSTYPE"/>
-		<property name="com.jaspersoft.studio.field.label" value="RLBM_TRANSTYPE"/>
-	</field>
-	<field name="RLBM_SPL_NAME" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="RLBM_SPL_NAME"/>
-		<property name="com.jaspersoft.studio.field.label" value="RLBM_SPL_NAME"/>
-	</field>
-	<field name="RLBM_DATE" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="RLBM_DATE"/>
-		<property name="com.jaspersoft.studio.field.label" value="RLBM_DATE"/>
-	</field>
-	<field name="RLBM_NOPO" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="RLBM_NOPO"/>
-		<property name="com.jaspersoft.studio.field.label" value="RLBM_NOPO"/>
-	</field>
-	<field name="RLBM_NOPAJAK" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="RLBM_NOPAJAK"/>
-		<property name="com.jaspersoft.studio.field.label" value="RLBM_NOPAJAK"/>
-	</field>
-	<field name="RLBM_BDESC" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="RLBM_BDESC"/>
-		<property name="com.jaspersoft.studio.field.label" value="RLBM_BDESC"/>
-	</field>
-	<field name="RLBM_QTY" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.name" value="RLBM_QTY"/>
-		<property name="com.jaspersoft.studio.field.label" value="RLBM_QTY"/>
-	</field>
-	<field name="RLBM_PRICE" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.name" value="RLBM_PRICE"/>
-		<property name="com.jaspersoft.studio.field.label" value="RLBM_PRICE"/>
-	</field>
-	<field name="RLBM_TOTALRP" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.name" value="RLBM_TOTALRP"/>
-		<property name="com.jaspersoft.studio.field.label" value="RLBM_TOTALRP"/>
-	</field>
-	<field name="RLBM_PPNRP" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.name" value="RLBM_PPNRP"/>
-		<property name="com.jaspersoft.studio.field.label" value="RLBM_PPNRP"/>
-	</field>
-	<field name="RLBM_GRANTTOTAL" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.name" value="RLBM_GRANTTOTAL"/>
-		<property name="com.jaspersoft.studio.field.label" value="RLBM_GRANTTOTAL"/>
-	</field>
-	<field name="RLBM_BTF" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="RLBM_BTF"/>
-		<property name="com.jaspersoft.studio.field.label" value="RLBM_BTF"/>
-	</field>
-	<field name="RLBM_KENAPPN" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.name" value="RLBM_KENAPPN"/>
-		<property name="com.jaspersoft.studio.field.label" value="RLBM_KENAPPN"/>
-	</field>
-	<field name="RLBM_PERIOD" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="RLBM_PERIOD"/>
-		<property name="com.jaspersoft.studio.field.label" value="RLBM_PERIOD"/>
-	</field>
-	<field name="RLBM_PERIODMON" class="java.lang.String"/>
-	<field name="RLBM_TTBDATE" class="java.sql.Date"/>
-	<field name="RLBM_ACCNO" class="java.lang.String"/>
-	<variable name="supp_beli" class="java.math.BigDecimal" calculation="Count">
-		<variableExpression><![CDATA[$F{RLBM_TOTALRP}]]></variableExpression>
+	<field name="rlbmTransType" class="java.lang.String"/>
+	<field name="rlbmSplName" class="java.lang.String"/>
+	<field name="rlbmDate" class="java.lang.String"/>
+	<field name="rlbmNoPo" class="java.lang.String"/>
+	<field name="rlbmNoPajak" class="java.lang.String"/>
+	<field name="rlbmDesc" class="java.lang.String"/>
+	<field name="rlbmQty" class="java.math.BigDecimal"/>
+	<field name="rlbmPrice" class="java.math.BigDecimal"/>
+	<field name="rlbmTotalRp" class="java.math.BigDecimal"/>
+	<field name="rlbmPpnRp" class="java.math.BigDecimal"/>
+	<field name="rlbmGrantTotal" class="java.math.BigDecimal"/>
+	<field name="rlbmBtf" class="java.lang.String"/>
+	<field name="rlbmKenaPpn" class="java.math.BigDecimal"/>
+	<field name="rlbmPeriodMonth" class="java.lang.String"/>
+	<field name="rlbmTtbDate" class="java.sql.Date"/>
+	<field name="rlbmAccNo" class="java.lang.String"/>
+	<variable name="supp_beli" class="java.math.BigDecimal" resetType="Group" resetGroup="Group_supplier" calculation="Sum">
+		<variableExpression><![CDATA[$F{rlbmTotalRp}]]></variableExpression>
+	</variable>
+	<variable name="supp_ppn" class="java.math.BigDecimal" resetType="Group" resetGroup="Group_supplier" calculation="Sum">
+		<variableExpression><![CDATA[$F{rlbmPpnRp}]]></variableExpression>
+	</variable>
+	<variable name="supp_total" class="java.math.BigDecimal" resetType="Group" resetGroup="Group_supplier" calculation="Sum">
+		<variableExpression><![CDATA[$F{rlbmGrantTotal}]]></variableExpression>
+	</variable>
+	<variable name="supp_knppn" class="java.math.BigDecimal" resetType="Group" resetGroup="Group_supplier" calculation="Sum">
+		<variableExpression><![CDATA[$F{rlbmKenaPpn}]]></variableExpression>
+	</variable>
+	<variable name="trans_beli" class="java.math.BigDecimal" resetType="Group" resetGroup="TRAN_TYPES" calculation="Sum">
+		<variableExpression><![CDATA[$F{rlbmTotalRp}]]></variableExpression>
+	</variable>
+	<variable name="trans_ppn" class="java.math.BigDecimal" resetType="Group" resetGroup="TRAN_TYPES" calculation="Sum">
+		<variableExpression><![CDATA[$F{rlbmPpnRp}]]></variableExpression>
+	</variable>
+	<variable name="trans_total" class="java.math.BigDecimal" resetType="Group" resetGroup="TRAN_TYPES" calculation="Sum">
+		<variableExpression><![CDATA[$F{rlbmGrantTotal}]]></variableExpression>
+	</variable>
+	<variable name="trans_knppn" class="java.math.BigDecimal" resetType="Group" resetGroup="TRAN_TYPES" calculation="Sum">
+		<variableExpression><![CDATA[$F{rlbmKenaPpn}]]></variableExpression>
+	</variable>
+	<variable name="report_beli" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{rlbmTotalRp}]]></variableExpression>
+	</variable>
+	<variable name="report_ppn" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{rlbmPpnRp}]]></variableExpression>
+	</variable>
+	<variable name="report_total" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{rlbmGrantTotal}]]></variableExpression>
+	</variable>
+	<variable name="report_knppn" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{rlbmKenaPpn}]]></variableExpression>
 	</variable>
 	<group name="TRAN_TYPES" isStartNewPage="true" isReprintHeaderOnEachPage="true">
-		<groupExpression><![CDATA[$F{RLBM_TRANSTYPE}]]></groupExpression>
+		<groupExpression><![CDATA[$F{rlbmTransType}]]></groupExpression>
 		<groupHeader>
 			<band height="39">
 				<textField>
@@ -78,10 +65,10 @@
 					<textElement>
 						<font isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{RLBM_TRANSTYPE}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{rlbmTransType}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="23" width="43" height="15" uuid="6085bd12-f380-4a33-8046-325b4b06cad2"/>
+					<reportElement x="0" y="23" width="43" height="16" uuid="6085bd12-f380-4a33-8046-325b4b06cad2"/>
 					<box>
 						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -94,7 +81,7 @@
 					<text><![CDATA[Tanggal]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="43" y="23" width="107" height="15" uuid="ffe5bfdf-f7cf-4dfb-b225-d6226f50510f"/>
+					<reportElement x="43" y="23" width="107" height="16" uuid="ffe5bfdf-f7cf-4dfb-b225-d6226f50510f"/>
 					<box>
 						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -107,7 +94,7 @@
 					<text><![CDATA[No. PO / F. Pajak]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="150" y="23" width="229" height="15" uuid="eeff7817-4505-4d55-b477-3b920caa7707">
+					<reportElement x="150" y="23" width="229" height="16" uuid="eeff7817-4505-4d55-b477-3b920caa7707">
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					</reportElement>
 					<box>
@@ -122,7 +109,7 @@
 					<text><![CDATA[Jenis Barang]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="379" y="23" width="39" height="15" uuid="81091b31-121a-475f-b8dd-7ad4739bb238"/>
+					<reportElement x="379" y="23" width="39" height="16" uuid="81091b31-121a-475f-b8dd-7ad4739bb238"/>
 					<box>
 						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -135,7 +122,7 @@
 					<text><![CDATA[No. Acc]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="419" y="23" width="40" height="15" uuid="73fb97ae-041b-44de-88bf-e8516a558262"/>
+					<reportElement x="419" y="23" width="40" height="16" uuid="73fb97ae-041b-44de-88bf-e8516a558262"/>
 					<box>
 						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -148,7 +135,7 @@
 					<text><![CDATA[Qty]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="459" y="23" width="80" height="15" uuid="f5b66962-87a1-43e1-898b-006168c7d70f"/>
+					<reportElement x="459" y="23" width="80" height="16" uuid="f5b66962-87a1-43e1-898b-006168c7d70f"/>
 					<box>
 						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -228,7 +215,49 @@
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="50"/>
+			<band height="30">
+				<textField pattern="#,##0.00">
+					<reportElement x="539" y="6" width="100" height="20" uuid="eb66fe2f-fa21-4e7e-947b-a51536bfc0b2"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{trans_beli}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="638" y="6" width="90" height="20" uuid="cce35ba8-a21c-4580-82d9-70640c2e5a6a"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{trans_ppn}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="728" y="6" width="100" height="20" uuid="45dce68f-747a-46f1-8a20-2f2b691caae2"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{trans_total}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="468" y="5" width="497" height="1" uuid="4b9f384e-9b53-45b2-84d2-7d11500bed11"/>
+				</line>
+				<line>
+					<reportElement x="469" y="28" width="497" height="1" uuid="34db4b92-b111-41b6-8749-dc4170dad138"/>
+				</line>
+				<staticText>
+					<reportElement x="468" y="6" width="68" height="20" uuid="9d93f61b-a03f-4a7d-848d-bed1e2e401cd"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Total / Jenis Bahan]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement x="880" y="6" width="86" height="22" uuid="fcc8c409-13c4-4fee-9de0-2595d52c8bd9"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{trans_knppn}]]></textFieldExpression>
+				</textField>
+			</band>
 		</groupFooter>
 	</group>
 	<group name="Group_supplier" isStartNewPage="true" isReprintHeaderOnEachPage="true">
@@ -239,7 +268,7 @@
 					<textElement verticalAlignment="Middle">
 						<font size="9" isBold="true" isStrikeThrough="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{RLBM_SPL_NAME}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{rlbmSplName}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="0" y="5" width="60" height="13" uuid="95cc47c9-595d-4ff6-9989-864fb887e156"/>
@@ -251,7 +280,49 @@
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="50"/>
+			<band height="25">
+				<textField pattern="#,##0.00">
+					<reportElement x="539" y="5" width="99" height="15" uuid="d1623020-56e0-4317-aeb8-76ca5e5e323b"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{supp_beli}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="638" y="5" width="89" height="15" uuid="93e21307-ae37-42df-b711-4a3e04ff3810"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{supp_ppn}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="727" y="5" width="101" height="15" uuid="09447b28-a03f-4ad2-afad-0718ae5ca019"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{supp_total}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="468" y="5" width="497" height="1" uuid="3ebf33bc-9255-4254-9dc1-7c4dd57802e1"/>
+				</line>
+				<line>
+					<reportElement x="468" y="24" width="497" height="1" uuid="85485823-417d-4ce5-8975-8ca8413f6b6e"/>
+				</line>
+				<staticText>
+					<reportElement x="468" y="4" width="68" height="18" uuid="a4811e42-8114-4998-867e-cf6a3dad2262"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Total / Supplier]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement x="880" y="3" width="86" height="18" uuid="f2ae28e5-44ad-4e8d-b3a8-19f0d3c3a0c7"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{supp_knppn}]]></textFieldExpression>
+				</textField>
+			</band>
 		</groupFooter>
 	</group>
 	<background>
@@ -296,14 +367,14 @@
 				<textElement verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{RLBM_DATE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rlbmDate}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement isPrintRepeatedValues="false" x="50" y="0" width="100" height="17" uuid="99eb2ff5-5377-4f17-8a75-c84ad6f4a7f1"/>
 				<textElement verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{RLBM_NOPO}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rlbmNoPo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement isPrintRepeatedValues="false" x="50" y="12" width="100" height="17" uuid="8172e117-0432-4812-89e4-d07d7071e11e">
@@ -312,74 +383,117 @@
 				<textElement verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{RLBM_NOPAJAK}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rlbmNoPajak}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="150" y="0" width="229" height="30" uuid="afcb00d0-51ae-429d-bd0d-7d270fe74da3"/>
 				<textElement textAlignment="Left" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{RLBM_BDESC}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rlbmDesc}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="379" y="0" width="40" height="17" uuid="b3116e3e-8d43-4450-96f0-f5b2468d10e7"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{RLBM_ACCNO}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rlbmAccNo}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
 				<reportElement x="419" y="0" width="40" height="17" uuid="8985fa2d-84b0-4c35-943f-5eea4c1b056d"/>
 				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{RLBM_QTY}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rlbmQty}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
 				<reportElement x="459" y="0" width="80" height="17" uuid="7d6e04d4-6c66-41a4-b1b7-349152e7f064"/>
 				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{RLBM_PRICE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rlbmPrice}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
 				<reportElement x="639" y="0" width="90" height="17" uuid="77765586-cb26-4e22-9420-6a823361e445"/>
 				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{RLBM_PPNRP}]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0.00">
-				<reportElement x="729" y="0" width="99" height="17" uuid="7de1f71e-4acb-47f8-a679-5f9aa5877528"/>
-				<textElement textAlignment="Right" verticalAlignment="Top">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{RLBM_TOTALRP}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rlbmPpnRp}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="829" y="0" width="51" height="17" uuid="c6ba8b35-e852-4bbf-ac68-b4e7aafb9967"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{RLBM_BTF}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rlbmBtf}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
 				<reportElement x="539" y="0" width="100" height="17" uuid="ca5d736b-f30d-48b0-88ad-753b25e8a3e9"/>
 				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{RLBM_TOTALRP}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rlbmTotalRp}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
 				<reportElement x="880" y="-1" width="87" height="18" uuid="f1e27857-a932-45e7-9106-4d0b51bf2d39"/>
 				<textElement textAlignment="Right">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{RLBM_KENAPPN}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rlbmKenaPpn}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="729" y="0" width="98" height="16" uuid="8496cd70-2e12-4fe0-a703-eb8ce65150e4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rlbmGrantTotal}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="51" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement x="539" y="6" width="100" height="20" uuid="a8cf663f-a745-4843-a0d9-dac01ffe577e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{report_beli}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="468" y="6" width="68" height="20" uuid="abe9d81f-123b-4c5a-9ee4-7e9c0518dcb1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Grand Total ]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="639" y="6" width="88" height="20" uuid="0addefcb-71d1-4310-86e1-f3f788a8797b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{report_ppn}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="727" y="6" width="100" height="20" uuid="9b304d83-5e9c-4344-b760-a7144f19899b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{report_total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="879" y="6" width="88" height="20" uuid="d762b592-d544-4352-b23b-b0e52e9a737f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{report_knppn}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="469" y="8" width="497" height="1" uuid="7bbecdf5-cc77-4411-b4f4-2668c4104899"/>
+			</line>
+			<line>
+				<reportElement x="469" y="27" width="497" height="1" uuid="d7eda0f3-14ba-4f37-a94e-cba8400e1a95"/>
+			</line>
+		</band>
 	</summary>
 </jasperReport>
+	

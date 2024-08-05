@@ -71,9 +71,6 @@ public class ReportBeliBahanMonthly {
 	 private BigDecimal rlbmGrantTotal;
 	
 	@Column(name="RLBM_KENAPPN")
-	 private BigDecimal rlbmKenaPpn;
-	
-	
-	
+	 private BigDecimal rlbmKenaPpn;	
 
 }
