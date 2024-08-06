@@ -24,15 +24,37 @@ public class ControllerReportsAP {
 	@Autowired
 	ServiceReportLapBeliBahanMonthly servRLBM;
 	
+	
 	 @GetMapping("/pdf/reporLapBeliBahanMontly")
-	 public void createPDF(String period, String cuscode, HttpServletResponse response) throws IOException, JRException {
+	 public void createPDF(String period, HttpServletResponse response) throws IOException, JRException {
 	       response.setContentType("application/pdf");
 	       DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
 	       String currentDateTime = dateFormatter.format(new Date());
 	       String headerKey = "Content-Disposition";
 	       String headerValue = "attachment; filename=Laporan Pembelian Dagang Bulanan " + currentDateTime + ".pdf";
 	       response.setHeader(headerKey, headerValue);
-	       servRLBM.tJaLapBeliBahanMonthly(period, response);
-	     //  return "Report Has bee Download";
+	       servRLBM.tJaLapBeliBahanMonthly(period, response);	 
+	    }
+	 
+	 @GetMapping("/pdf/reporLapBeliBahanMontlyBiaya")
+	 public void createPDFBiaya(String period,  HttpServletResponse response) throws IOException, JRException {
+	       response.setContentType("application/pdf");
+	       DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+	       String currentDateTime = dateFormatter.format(new Date());
+	       String headerKey = "Content-Disposition";
+	       String headerValue = "attachment; filename=Laporan Pembelian Biaya Bulanan  " + currentDateTime + ".pdf";
+	       response.setHeader(headerKey, headerValue);
+	       servRLBM.tJaLapBeliBahanMonthlyBiaya(period, response);
+	    }
+	
+	 @GetMapping("/pdf/reporLapBeliBahanMontlyOther")
+	 public void createPDFOther(String period,  HttpServletResponse response) throws IOException, JRException {
+	       response.setContentType("application/pdf");
+	       DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+	       String currentDateTime = dateFormatter.format(new Date());
+	       String headerKey = "Content-Disposition";
+	       String headerValue = "attachment; filename=Laporan Pembelian Lain-Lain Bulanan  " + currentDateTime + ".pdf";
+	       response.setHeader(headerKey, headerValue);
+	       servRLBM.tJaLapBeliBahanMonthlyOther(period, response);
 	    }
 }
