@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.1.final using JasperReports Library version 6.21.0-4f56c4f36cd19e17675219a9ac4692d5f0f13b06  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LAP_AP_INFO_MAIN" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="21315a55-f9d3-4934-916c-ba4ec0fddf7b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AP_DB"/>
+	<parameter name="p_pono" class="java.lang.String"/>
+	<field name="rlaimNottb" class="java.lang.String"/>
+	<field name="rlaimNoPo" class="java.lang.String"/>
+	<field name="rlaimDate" class="java.lang.String"/>
+	<field name="rlaimInvoice" class="java.lang.String"/>
+	<field name="rlaimNoPjk" class="java.lang.String"/>
+	<field name="rlaimBbCode" class="java.lang.String"/>
+	<field name="rlaimSupplier" class="java.lang.String"/>
+	<field name="rlaimQty" class="java.lang.String"/>
+	<field name="rlaimBbDesc" class="java.lang.String"/>
+	<field name="rlaimJenisBahan" class="java.lang.String"/>
+	<group name="Group_Supplier">
+		<groupExpression><![CDATA[$F{rlaimSupplier}]]></groupExpression>
+		<groupHeader>
+			<band height="25">
+				<textField>
+					<reportElement x="50" y="0" width="380" height="20" uuid="86aa0968-f7c6-46f2-af36-aeb701ca641f"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{rlaimSupplier}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="50" height="20" uuid="b987aa2c-e14e-4176-8cf2-b32f581f180a"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Supplier  :]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50">
+				<subreport>
+					<reportElement x="5" y="-190" width="544" height="100" uuid="1dffdb9c-97c7-40a4-9ca8-edbc6d3a579f"/>
+					<subreportParameter name="P_PONO">
+						<subreportParameterExpression><![CDATA[$F{rlaimNoPo}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="P_TTBNO">
+						<subreportParameterExpression><![CDATA[$F{rlaimNottb}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA["LAP_AP_INFO_BAYAR.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Group_PO">
+		<groupExpression><![CDATA[$F{rlaimNoPo}]]></groupExpression>
+		<groupHeader>
+			<band height="66">
+				<textField>
+					<reportElement x="65" y="4" width="100" height="16" uuid="bb2b142c-ab35-4891-a842-a4e5cef1e9fd"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{rlaimNoPo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="6" y="4" width="59" height="16" uuid="825339f0-c0d9-4869-9e4a-da0ea5b0d248"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[No. PO         :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="6" y="24" width="59" height="16" uuid="f92da9cf-ec70-47b7-b691-a10d9f5da917"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[No. F Pajak  :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="218" y="4" width="57" height="16" uuid="6bf8f586-7f9d-481f-91f7-b23f848ebae8"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[No. TTB      :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="216" y="24" width="60" height="16" uuid="7bb2357b-eff8-4685-ae15-ad2d26e25bb7"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[No. Invoice  :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="415" y="4" width="50" height="16" uuid="ef8d3a31-d0ef-428c-954b-fe784bc78281"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Tgl. TTB  :]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="65" y="24" width="100" height="16" uuid="05ad7268-7add-47ba-afcb-f4daf2ed6120"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{rlaimNoPjk}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="275" y="4" width="100" height="16" uuid="d355672a-0d57-474b-8338-526fca596c75"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{rlaimNottb}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="275" y="24" width="100" height="16" uuid="6fc83b11-ab83-40e8-aee1-ce9b6c7e9585"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{rlaimInvoice}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="465" y="4" width="80" height="16" uuid="b74e70de-a88d-4323-9dbf-522c867bc2f6"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{rlaimDate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="6" y="44" width="100" height="16" uuid="90a57d74-d9ff-499a-bff1-1d82fb730b18"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Kode Bahan]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="107" y="44" width="239" height="16" uuid="16e3ddf9-5577-40ad-b902-892a5e6023f4"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Nama Bahan / Barang]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="345" y="44" width="105" height="16" uuid="593383e5-f9ab-4890-8006-452bd26a8e23"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Jenis]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="450" y="44" width="95" height="16" uuid="0adfef1b-a6e8-41e1-8533-138b5db3d05a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Qty]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="212"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="140" height="23" uuid="cebde377-a12f-4d06-9d43-15d6faa152a7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Acount Payable - Info]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="6" y="0" width="100" height="20" uuid="03ef63ae-4f3a-4b7d-95cf-841ebceb189c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rlaimBbCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="0" width="239" height="20" uuid="fb3c9eb5-1acf-4457-96ac-632a42a41ba3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rlaimBbDesc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="345" y="0" width="105" height="20" uuid="091aff47-3547-4921-84f6-cbc03b75fab5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rlaimJenisBahan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="94" height="20" uuid="763034df-482b-4f67-b92b-dab3446ec6c4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rlaimQty}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

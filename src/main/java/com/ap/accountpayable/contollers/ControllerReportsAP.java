@@ -1,6 +1,7 @@
 package com.ap.accountpayable.contollers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ap.accountpayable.services.ServiceReportLapBeliBahanMonthly;
 
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperPrint;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -18,6 +21,15 @@ import java.util.List;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
+
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperExportManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController 
 public class ControllerReportsAP {
@@ -56,5 +68,34 @@ public class ControllerReportsAP {
 	       String headerValue = "attachment; filename=Laporan Pembelian Lain-Lain Bulanan  " + currentDateTime + ".pdf";
 	       response.setHeader(headerKey, headerValue);
 	       servRLBM.tJaLapBeliBahanMonthlyOther(period, response);
+	    }
+	 
+	 @GetMapping("/pdf/reportAPInfo")
+	 public void createPDFApInfo(String nopo,  HttpServletResponse response) throws IOException, JRException {
+	       response.setContentType("application/pdf");
+	       DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+	       String currentDateTime = dateFormatter.format(new Date());
+	       String headerKey = "Content-Disposition";
+	       String headerValue = "attachment; filename=Account Payable - Info  " + currentDateTime + ".pdf";
+	       response.setHeader(headerKey, headerValue);
+	       servRLBM.tJaLapAPInfo(nopo, response);
+	    }
+	 
+	 
+	 @GetMapping("/pdf/reportAPInfo2")
+	 public ResponseEntity<byte[]> generateReport(String nopo) {
+	        try {
+	            JasperPrint jasperPrint = servRLBM.generateReport(nopo);
+	            byte[] data = JasperExportManager.exportReportToPdf(jasperPrint);
+
+	            HttpHeaders headers = new HttpHeaders();
+	            headers.set(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=report.pdf");
+	            headers.setContentType(MediaType.APPLICATION_PDF);
+
+	            return ResponseEntity.ok().headers(headers).body(data);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return ResponseEntity.status(500).build();
+	        }
 	    }
 }
