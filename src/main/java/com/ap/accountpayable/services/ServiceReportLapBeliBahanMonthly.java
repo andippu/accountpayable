@@ -18,10 +18,12 @@ import com.ap.accountpayable.Repository.IReportApInfo;
 import com.ap.accountpayable.Repository.IReportBeliBahanMonthly;
 import com.ap.accountpayable.Repository.IReportBeliBahanMonthlyBiaya;
 import com.ap.accountpayable.Repository.IReportBeliBahanMonthlyOthers;
+import com.ap.accountpayable.Repository.IReportOutstandingHutang;
 import com.ap.accountpayable.models.ReportApInfo;
 import com.ap.accountpayable.models.ReportBeliBahanMonthly;
 import com.ap.accountpayable.models.ReportBeliBahanMonthlyBiaya;
 import com.ap.accountpayable.models.ReportBeliBahanMonthlyOthers;
+import com.ap.accountpayable.models.ReportOutstandingHutang;
 
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
@@ -43,6 +45,8 @@ public class ServiceReportLapBeliBahanMonthly {
 	IReportBeliBahanMonthlyOthers repoRLBMO;
 	@Autowired
 	IReportApInfo repoApInfo;
+	@Autowired
+	IReportOutstandingHutang repoOutHut;
 	
 	public void tJaLapBeliBahanMonthly(String period, HttpServletResponse response) throws JRException, IOException {
 		List<ReportBeliBahanMonthly> RLBM= repoRLBM.findByRlbmPeriodMonthOrderByRlbmTtbDate(period);		
@@ -87,22 +91,37 @@ public class ServiceReportLapBeliBahanMonthly {
 		JasperExportManager.exportReportToPdfStream(jasperPrint,response.getOutputStream());
 	}
 	
+	
+	public void tJaLapOutstandingHutang(String splcode, String pdate1, String pdate2, HttpServletResponse response) throws JRException, IOException {
+		List<ReportOutstandingHutang> outhut= repoOutHut.findByRoshSplCodeAndRoshTtbDateBetween(splcode, pdate1, pdate2); //repoApInfo.findByRlaimNoPo(nopo);
+		File file = ResourceUtils.getFile("classpath:LAP_OUTSTANDING_HUTANG.jrxml");		
+		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());		
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(outhut);		
+		Map<String, Object> parameters = new HashMap<>();		
+		parameters.put("pdate1", pdate1);		
+		parameters.put("pdate2", pdate2);		
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+		JasperExportManager.exportReportToPdfStream(jasperPrint,response.getOutputStream());
+	}
+	
+	public List<ReportOutstandingHutang> tJaLapOutstandingHutang2(String splcode, String pdate1, String pdate2) {
+		return repoOutHut.findByRoshSplCodeAndRoshTtbDateBetween(splcode, pdate1, pdate2); 
+	}
+	
+
+	
 	public JasperPrint generateReport(String nopo) throws Exception {
         // Load main report
         File file = ResourceUtils.getFile("classpath:LAP_AP_INFO_BAYAR.jasper");
         JasperReport jasperReport = (JasperReport) JRLoader.loadObject(file);
-
         // Parameters for main report
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("p_nopo", "00057/V/19/UM/LAPI");
-
+        parameters.put("p_nopo", nopo);
         // Load sub-report
         File subReportFile = ResourceUtils.getFile("classpath:Blank_A4_1.jasper");
         JasperReport subReport = (JasperReport) JRLoader.loadObject(subReportFile);
-
         // Add sub-report as a parameter
         parameters.put("ProductsSubReport", subReport);
-
         // Fill the report
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
 

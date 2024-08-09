@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ap.accountpayable.models.ReportOutstandingHutang;
 import com.ap.accountpayable.services.ServiceReportLapBeliBahanMonthly;
 
 import net.sf.jasperreports.engine.JRException;
@@ -80,6 +81,22 @@ public class ControllerReportsAP {
 	       response.setHeader(headerKey, headerValue);
 	       servRLBM.tJaLapAPInfo(nopo, response);
 	    }
+	 
+	 @GetMapping("/pdf/reportOutsHutang")
+	 public void createPDFOutsHut(String splcode, String pdate1, String pdate2,  HttpServletResponse response) throws IOException, JRException {
+	       response.setContentType("application/pdf");
+	       DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+	       String currentDateTime = dateFormatter.format(new Date());
+	       String headerKey = "Content-Disposition";
+	       String headerValue = "attachment; filename=Outstanding Hutang " + currentDateTime + ".pdf";
+	       response.setHeader(headerKey, headerValue);
+	       servRLBM.tJaLapOutstandingHutang(splcode, pdate1, pdate2, response);
+	    }
+	 
+	 @GetMapping("/pdf/reportOutsHutang2")
+	 public List<ReportOutstandingHutang> getouthut(String splcode, String pdate1, String pdate2){
+		 return servRLBM.tJaLapOutstandingHutang2(splcode, pdate1, pdate2);
+	 }
 	 
 	 
 	 @GetMapping("/pdf/reportAPInfo2")

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.1.final using JasperReports Library version 6.21.0-4f56c4f36cd19e17675219a9ac4692d5f0f13b06  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LAP_OUTSTANDING_HUTNANG" pageWidth="1008" pageHeight="720" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fd716c03-5e3a-4a48-bcc9-d582045b6a41">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AP_DB"/>
+	<property name="com.jaspersoft.studio.unit." value="inch"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="inch"/>
+	<parameter name="pdate1" class="java.lang.String"/>
+	<parameter name="pdate2" class="java.lang.String"/>
+	<field name="roshSplCode" class="java.lang.String"/>
+	<field name="roshTtbDate" class="java.lang.String"/>
+	<field name="roshNoPO" class="java.lang.String"/>
+	<field name="roshNoTtb" class="java.lang.String"/>
+	<field name="roshNoInvoice" class="java.lang.String"/>
+	<field name="roshPrice" class="java.math.BigDecimal"/>
+	<field name="roshKursCode" class="java.lang.String"/>
+	<field name="roshKurs" class="java.math.BigDecimal"/>
+	<field name="roshTotalKurs" class="java.math.BigDecimal"/>
+	<field name="roshTotalRp" class="java.math.BigDecimal"/>
+	<field name="roshPpnRp" class="java.math.BigDecimal"/>
+	<field name="roshGrandTotal" class="java.math.BigDecimal"/>
+	<field name="roshSupplier" class="java.lang.String"/>
+	<field name="roshBydDate" class="java.lang.String"/>
+	<field name="roshNoVpk" class="java.lang.String"/>
+	<field name="roshAmountRp" class="java.math.BigDecimal"/>
+	<field name="roshStatus" class="java.lang.String"/>
+	<group name="Group_Supplier">
+		<groupExpression><![CDATA[$F{roshSupplier}]]></groupExpression>
+		<groupHeader>
+			<band height="54">
+				<textField>
+					<reportElement x="52" y="6" width="258" height="20" uuid="76fb9e10-1a53-4cb9-af0d-42220d38df3d"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{roshSupplier}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="6" width="52" height="20" uuid="a76dfdac-6411-4ac6-a1b6-fdff1ab56fe0"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Supplier  :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="26" width="100" height="12" uuid="a36f6ae4-31d6-4e24-92ba-0c2fdac2c7f6"/>
+					<textElement textAlignment="Left">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[No. TTB]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="100" y="26" width="100" height="12" uuid="63676a3f-0f3d-4419-a4b6-8bcebc496de8"/>
+					<textElement>
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[No. PO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="200" y="26" width="110" height="12" uuid="d2135e09-67c2-4a1d-a6be-3de8ba7be115"/>
+					<textElement>
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[No. Invoice]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="30" y="40" width="90" height="12" uuid="88fae47b-6dce-4534-9627-5a9c01f7ba22"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Price]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="150" y="40" width="70" height="12" uuid="b3c0ad35-11b2-4e35-8d82-c3223c313157"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Kurs Rate]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="220" y="40" width="90" height="12" uuid="790e5efd-dccd-4899-ad69-5144f676e0a1"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Total Kurs]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="311" y="40" width="90" height="12" uuid="a1ae38fa-9253-4830-8454-89f75a4a9f7e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Total Rupiah]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="401" y="40" width="72" height="12" uuid="79a93c03-2355-4be8-980e-9c7a529282b7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[PPN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="473" y="40" width="90" height="12" uuid="9c9011e4-cfd5-4bb2-b3c1-1269e118e71d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Grand Total]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="610" y="38" width="60" height="14" uuid="835af842-0494-4cad-9c0e-038e7fe6ed99"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Tgl. VPK]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="670" y="38" width="100" height="14" uuid="6cfd2fb2-17a1-4497-b8d3-8d217bceb443"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[No. VPK]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="770" y="38" width="100" height="14" uuid="6c0ff161-1c74-4ffd-a72c-d4f2baaad9bf"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Jumlah Bayar]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="870" y="38" width="50" height="14" uuid="ef393d7e-ab19-43c2-a432-2519e6535b10"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Status]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="120" y="39" width="30" height="12" uuid="34d6ab58-204d-41d8-ade6-9ea1ef171ec6"/>
+					<textElement>
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Kurs]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement mode="Transparent" x="0" y="26" width="971" height="28" forecolor="rgba(0, 0, 0, 0.79607844)" uuid="aa1ab5e8-ff4e-401b-83d6-fd02021df264"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="160" height="20" uuid="042e560b-d82d-4b26-8d7b-096988b48f7d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Outstanding Hutang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="26" width="50" height="14" uuid="c7a06247-0a98-49cd-a439-934949981fbd"/>
+				<text><![CDATA[Periode  :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="52" y="26" width="57" height="14" uuid="d016c498-4372-438e-8f8e-d5b7afdccfcb"/>
+				<textFieldExpression><![CDATA[$P{pdate1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="109" y="26" width="22" height="14" uuid="0270fce4-516a-4054-bc60-0d7314eb62b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[s/d]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="131" y="26" width="58" height="16" uuid="3b1a78af-3d5b-4a0a-b9c4-9a9fa02e6339"/>
+				<textFieldExpression><![CDATA[$P{pdate2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="17" uuid="55b7e842-6e5a-4225-999c-ad479586df33"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roshNoTtb}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="-1" width="100" height="18" uuid="7f788f74-40d8-4c95-bba5-8d6f27311b1c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roshNoPO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="-1" width="110" height="18" uuid="0aab3f7f-e5cc-4b15-94b4-0c9584015d4a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roshNoInvoice}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="30" y="20" width="90" height="12" uuid="9270e8ae-5df1-479d-a9bb-3f042e06d403"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roshPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="20" width="30" height="12" uuid="e2498ad6-0cbd-453c-b521-564bfcc9d919"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roshKursCode}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="150" y="20" width="70" height="12" uuid="41cf01cd-0fb3-45df-a7e6-cc5d8bd7dac2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roshKurs}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="220" y="20" width="91" height="12" uuid="5bb4ad51-9b24-466a-b57b-a5eeea6333d6"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roshTotalKurs}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="310" y="20" width="93" height="12" uuid="0bb0e240-23e2-4fd7-b86f-4d8a3ca2058f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roshTotalRp}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="401" y="20" width="72" height="12" uuid="83511d57-c129-4dc7-a526-20e44b65b168"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roshPpnRp}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="473" y="20" width="90" height="12" uuid="64abef7a-77a0-43d4-b1d7-c2ed2a82921f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roshGrandTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="610" y="20" width="60" height="12" uuid="b6e22668-8c32-4e3e-81f6-c1423463bb5d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roshNoVpk}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="770" y="20" width="100" height="12" uuid="15e82174-f3b1-4b70-9c5f-8a361f7e8efb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roshAmountRp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="870" y="20" width="50" height="12" uuid="93394263-37ba-442a-97a0-224be3d2b900"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roshStatus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="670" y="20" width="100" height="12" uuid="0ce608df-dc97-4785-b097-acc77c55b08d"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roshNoVpk}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
+	
