@@ -19,11 +19,13 @@ import com.ap.accountpayable.Repository.IReportBeliBahanMonthly;
 import com.ap.accountpayable.Repository.IReportBeliBahanMonthlyBiaya;
 import com.ap.accountpayable.Repository.IReportBeliBahanMonthlyOthers;
 import com.ap.accountpayable.Repository.IReportOutstandingHutang;
+import com.ap.accountpayable.Repository.IReportTandaTerimaFPajak;
 import com.ap.accountpayable.models.ReportApInfo;
 import com.ap.accountpayable.models.ReportBeliBahanMonthly;
 import com.ap.accountpayable.models.ReportBeliBahanMonthlyBiaya;
 import com.ap.accountpayable.models.ReportBeliBahanMonthlyOthers;
 import com.ap.accountpayable.models.ReportOutstandingHutang;
+import com.ap.accountpayable.models.ReportTandaTerimaFPajak;
 
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
@@ -47,6 +49,8 @@ public class ServiceReportLapBeliBahanMonthly {
 	IReportApInfo repoApInfo;
 	@Autowired
 	IReportOutstandingHutang repoOutHut;
+	@Autowired
+	IReportTandaTerimaFPajak repoFTTFP;
 	
 	public void tJaLapBeliBahanMonthly(String period, HttpServletResponse response) throws JRException, IOException {
 		List<ReportBeliBahanMonthly> RLBM= repoRLBM.findByRlbmPeriodMonthOrderByRlbmTtbDate(period);		
@@ -100,6 +104,16 @@ public class ServiceReportLapBeliBahanMonthly {
 		Map<String, Object> parameters = new HashMap<>();		
 		parameters.put("pdate1", pdate1);		
 		parameters.put("pdate2", pdate2);		
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+		JasperExportManager.exportReportToPdfStream(jasperPrint,response.getOutputStream());
+	}
+	
+	public void tJaLapTandaTerimaFPajak(String period, HttpServletResponse response) throws JRException, IOException {
+		List<ReportTandaTerimaFPajak> outhut= repoFTTFP.findByRttfpPeriod(period);
+		File file = ResourceUtils.getFile("classpath:LAP_TANDATERIMA_FPAJAK.jrxml");		
+		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());		
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(outhut);		
+		Map<String, Object> parameters = new HashMap<>();			
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
 		JasperExportManager.exportReportToPdfStream(jasperPrint,response.getOutputStream());
 	}
