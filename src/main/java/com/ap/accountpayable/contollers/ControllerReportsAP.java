@@ -104,6 +104,18 @@ public class ControllerReportsAP {
 	       servRLBM.tJaLapTandaTerimaFPajak(period, response);
 	    }
 	 
+	 @GetMapping("/pdf/reportunpaidap")
+	 public void createUnpaidAP(String pdate, String ptype,  HttpServletResponse response) throws IOException, JRException {
+	       response.setContentType("application/pdf");
+	       DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+	       String currentDateTime = dateFormatter.format(new Date());
+	       String headerKey = "Content-Disposition";
+	       String headerValue = "attachment; filename=Tanda Unpaid Account Payable " + currentDateTime + ".pdf";
+	       response.setHeader(headerKey, headerValue);
+	       servRLBM.tJaLapUnpaidAP(pdate, ptype, response);
+	    }
+	 
+	 
 	 @GetMapping("/pdf/reportOutsHutang2")
 	 public List<ReportOutstandingHutang> getouthut(String splcode, String pdate1, String pdate2){
 		 System.out.println("aaaaaaa : "+splcode+"--"+pdate1+"---"+pdate2+"---");
