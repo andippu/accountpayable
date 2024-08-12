@@ -29,84 +29,84 @@
 					<text><![CDATA[Supplier  :]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="1" y="19" width="100" height="30" uuid="2e011d76-7795-4ea0-9933-7dd57c546b5c"/>
+					<reportElement x="1" y="19" width="131" height="30" uuid="2e011d76-7795-4ea0-9933-7dd57c546b5c"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<text><![CDATA[No. PO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="101" y="19" width="100" height="30" uuid="dd878475-74e5-452f-8076-07567eb9c3a7"/>
+					<reportElement x="132" y="19" width="120" height="30" uuid="dd878475-74e5-452f-8076-07567eb9c3a7"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<text><![CDATA[No. TTB]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="201" y="19" width="70" height="30" uuid="c60de1c4-cc96-4022-9910-1ce905b728b4"/>
+					<reportElement x="252" y="19" width="70" height="30" uuid="c60de1c4-cc96-4022-9910-1ce905b728b4"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<text><![CDATA[TTB Date]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="271" y="19" width="49" height="30" uuid="c73d0869-4be8-4397-948d-92fd2a81767f"/>
+					<reportElement x="322" y="19" width="49" height="30" uuid="c73d0869-4be8-4397-948d-92fd2a81767f"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<text><![CDATA[Overdue]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="332" y="19" width="100" height="13" uuid="506d2d0c-c8b9-4068-9fad-22c5dac37840"/>
+					<reportElement x="383" y="19" width="100" height="13" uuid="506d2d0c-c8b9-4068-9fad-22c5dac37840"/>
 					<text><![CDATA[Pembelian]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="332" y="33" width="80" height="16" uuid="3165c1d1-06eb-4803-a7e0-1015dbb3963b"/>
+					<reportElement x="383" y="33" width="80" height="16" uuid="3165c1d1-06eb-4803-a7e0-1015dbb3963b"/>
 					<textElement textAlignment="Left" verticalAlignment="Middle"/>
 					<text><![CDATA[Total]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="412" y="33" width="68" height="16" uuid="2abb46df-e093-463a-a849-5f1cdba9f447"/>
+					<reportElement x="463" y="33" width="68" height="16" uuid="2abb46df-e093-463a-a849-5f1cdba9f447"/>
 					<textElement textAlignment="Left" verticalAlignment="Middle"/>
 					<text><![CDATA[PPN]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="532" y="19" width="100" height="13" uuid="86de4e0b-c29b-4e5a-8341-9f1c4f5f6005"/>
+					<reportElement x="583" y="19" width="100" height="13" uuid="86de4e0b-c29b-4e5a-8341-9f1c4f5f6005"/>
 					<text><![CDATA[Pembayaran]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="532" y="33" width="80" height="16" uuid="4a95a3ce-d2a2-47ff-998a-b32b4d424893"/>
+					<reportElement x="583" y="33" width="80" height="16" uuid="4a95a3ce-d2a2-47ff-998a-b32b4d424893"/>
 					<textElement textAlignment="Left" verticalAlignment="Middle"/>
 					<text><![CDATA[Total]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="612" y="32" width="68" height="16" uuid="0f33f962-d307-449b-9546-a3f34b72a107">
+					<reportElement x="663" y="32" width="68" height="16" uuid="0f33f962-d307-449b-9546-a3f34b72a107">
 						<property name="com.jaspersoft.studio.unit.y" value="inch"/>
 					</reportElement>
 					<textElement textAlignment="Left" verticalAlignment="Middle"/>
 					<text><![CDATA[PPN]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="732" y="19" width="100" height="13" uuid="4e6ae408-a14f-424a-bc7f-d9c4e37f48fc"/>
+					<reportElement x="783" y="19" width="100" height="13" uuid="4e6ae408-a14f-424a-bc7f-d9c4e37f48fc"/>
 					<text><![CDATA[Retur]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="732" y="33" width="80" height="16" uuid="3b39f8e2-22ea-4000-9203-c1adaef0acd7"/>
+					<reportElement x="783" y="33" width="80" height="16" uuid="3b39f8e2-22ea-4000-9203-c1adaef0acd7"/>
 					<textElement textAlignment="Left" verticalAlignment="Middle"/>
 					<text><![CDATA[Total]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="813" y="33" width="68" height="16" uuid="12e5963f-0c75-4b73-8e58-f8b4e6938995"/>
+					<reportElement x="864" y="33" width="68" height="16" uuid="12e5963f-0c75-4b73-8e58-f8b4e6938995"/>
 					<textElement textAlignment="Left" verticalAlignment="Middle"/>
 					<text><![CDATA[PPN]]></text>
 				</staticText>
 				<line>
-					<reportElement x="332" y="32" width="148" height="1" uuid="931086a8-228d-49a3-bfc9-b1f8dc6370a9"/>
+					<reportElement x="383" y="32" width="148" height="1" uuid="931086a8-228d-49a3-bfc9-b1f8dc6370a9"/>
 				</line>
 				<line>
-					<reportElement x="532" y="32" width="148" height="1" uuid="7671ef38-2edb-40ac-a16e-6496ab1c81c8"/>
+					<reportElement x="583" y="32" width="148" height="1" uuid="7671ef38-2edb-40ac-a16e-6496ab1c81c8"/>
 				</line>
 				<line>
-					<reportElement x="733" y="32" width="148" height="1" uuid="74d22388-6a7b-4329-bf47-7f5dada4a699"/>
+					<reportElement x="784" y="32" width="148" height="1" uuid="74d22388-6a7b-4329-bf47-7f5dada4a699"/>
 				</line>
 			</band>
 		</groupHeader>
 		<groupFooter>
 			<band height="54">
 				<subreport>
-					<reportElement x="264" y="0" width="610" height="50" uuid="aa712964-5016-4b32-a15e-f337155472f6"/>
+					<reportElement x="315" y="1" width="610" height="50" uuid="aa712964-5016-4b32-a15e-f337155472f6"/>
 					<subreportParameter name="p_suppname">
 						<subreportParameterExpression><![CDATA[$F{rupapSupName}]]></subreportParameterExpression>
 					</subreportParameter>
@@ -133,12 +133,14 @@
 	<detail>
 		<band height="21" splitType="Stretch">
 			<textField>
-				<reportElement x="1" y="0" width="100" height="20" uuid="d823c31c-ce89-4c6c-a2eb-df8adddddb17"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="0" y="-1" width="131" height="20" uuid="d823c31c-ce89-4c6c-a2eb-df8adddddb17"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{rupapNoPo}]]></textFieldExpression>
 			</textField>
 			<subreport>
-				<reportElement stretchType="RelativeToTallestObject" x="100" y="-1" width="821" height="21" uuid="62623850-6cb5-4bc5-a4ba-eee4c2c4df6d"/>
+				<reportElement stretchType="RelativeToTallestObject" x="131" y="-3" width="821" height="21" uuid="62623850-6cb5-4bc5-a4ba-eee4c2c4df6d"/>
 				<subreportParameter name="p_nopo">
 					<subreportParameterExpression><![CDATA[$F{rupapNoPo}]]></subreportParameterExpression>
 				</subreportParameter>
