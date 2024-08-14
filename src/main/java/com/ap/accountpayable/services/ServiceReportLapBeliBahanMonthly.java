@@ -18,6 +18,7 @@ import com.ap.accountpayable.Repository.IReportApInfo;
 import com.ap.accountpayable.Repository.IReportBeliBahanMonthly;
 import com.ap.accountpayable.Repository.IReportBeliBahanMonthlyBiaya;
 import com.ap.accountpayable.Repository.IReportBeliBahanMonthlyOthers;
+import com.ap.accountpayable.Repository.IReportBeliBelumLunas;
 import com.ap.accountpayable.Repository.IReportOutstandingHutang;
 import com.ap.accountpayable.Repository.IReportTandaTerimaFPajak;
 import com.ap.accountpayable.Repository.IReportUnpaidAP;
@@ -25,6 +26,7 @@ import com.ap.accountpayable.models.ReportApInfo;
 import com.ap.accountpayable.models.ReportBeliBahanMonthly;
 import com.ap.accountpayable.models.ReportBeliBahanMonthlyBiaya;
 import com.ap.accountpayable.models.ReportBeliBahanMonthlyOthers;
+import com.ap.accountpayable.models.ReportBeliBelumLunas;
 import com.ap.accountpayable.models.ReportOutstandingHutang;
 import com.ap.accountpayable.models.ReportTandaTerimaFPajak;
 import com.ap.accountpayable.models.ReportUnpaidAP;
@@ -55,6 +57,8 @@ public class ServiceReportLapBeliBahanMonthly {
 	IReportTandaTerimaFPajak repoFTTFP;
 	@Autowired
 	IReportUnpaidAP repoUPAP;
+	@Autowired
+	IReportBeliBelumLunas repoBlBlLns;
 	
 	public void tJaLapBeliBahanMonthly(String period, HttpServletResponse response) throws JRException, IOException {
 		List<ReportBeliBahanMonthly> RLBM= repoRLBM.findByRlbmPeriodMonthOrderByRlbmTtbDate(period);		
@@ -124,21 +128,31 @@ public class ServiceReportLapBeliBahanMonthly {
 	
 	public void tJaLapUnpaidAP(String pdate, String ptype, HttpServletResponse response) throws JRException, IOException {
 		String temp=repoUPAP.execUnpaidAp(pdate, ptype);
-		System.out.println("hasil......:"+temp);
 		List<ReportUnpaidAP> outUPAP= repoUPAP.findAll();
-		System.out.println("hasil 111111......:"+temp);
-		File file = ResourceUtils.getFile("classpath:LAP_UNPAID_AP.jrxml");		
-		System.out.println("hasil 22222222222......:"+temp);
+		File file = ResourceUtils.getFile("classpath:LAP_UNPAID_AP.jrxml");	
 		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());	
-		System.out.println("hasil 33333333......:"+temp);
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(outUPAP);	
-		System.out.println("hasil 444444444......:"+temp);
 		Map<String, Object> parameters = new HashMap<>();		
-		System.out.println("hasil 55555555555......:"+temp);
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-		System.out.println("hasil 6666666666666......:"+temp);
 		JasperExportManager.exportReportToPdfStream(jasperPrint,response.getOutputStream());
-		System.out.println("hasil 7777777......:"+temp);
+	}
+	
+	public List<ReportBeliBelumLunas> tJaLapBeliBelumLunas(String pdate, String pdate2, byte choice) throws JRException, IOException {
+		if (choice==1) {
+			String temp=repoBlBlLns.execBlBlLnAntara(pdate, pdate2);
+			return repoBlBlLns.findAll();
+			}
+		else {
+			if (choice==2) {
+				String temp=repoBlBlLns.execBlBlLnByInput(pdate, pdate2);
+				return repoBlBlLns.findAll();
+				}
+			else {
+				String temp=repoBlBlLns.execBlBlLnKecilSama(pdate, pdate2);
+				return repoBlBlLns.findAll();
+			}
+		}		
+		
 	}
 	
 	

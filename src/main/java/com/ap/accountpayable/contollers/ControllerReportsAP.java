@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ap.accountpayable.models.ReportBeliBelumLunas;
 import com.ap.accountpayable.models.ReportOutstandingHutang;
 import com.ap.accountpayable.services.ServiceReportLapBeliBahanMonthly;
 
@@ -33,6 +34,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController 
+@CrossOrigin("http://localhost:4200")
 public class ControllerReportsAP {
 	@Autowired
 	ServiceReportLapBeliBahanMonthly servRLBM;
@@ -139,4 +141,9 @@ public class ControllerReportsAP {
 	            return ResponseEntity.status(500).build();
 	        }
 	    }
+	 
+	 @GetMapping("/excel/getbelibelumlunas")
+	 public List<ReportBeliBelumLunas> getAllList(String pdate, String pdate2, byte choice) throws JRException, IOException  {
+		return servRLBM.tJaLapBeliBelumLunas(pdate, pdate2, choice);
+	  }
 }
