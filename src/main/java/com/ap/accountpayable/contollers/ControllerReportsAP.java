@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ap.accountpayable.models.ReportBeliBelumLunas;
+import com.ap.accountpayable.models.ReportCoaBeliLain;
 import com.ap.accountpayable.models.ReportOutstandingHutang;
 import com.ap.accountpayable.services.ServiceReportLapBeliBahanMonthly;
 
@@ -123,7 +124,7 @@ public class ControllerReportsAP {
 		 System.out.println("aaaaaaa : "+splcode+"--"+pdate1+"---"+pdate2+"---");
 		 return servRLBM.tJaLapOutstandingHutang2(splcode, pdate1, pdate2);
 	 }
-	 
+	 	 
 	 
 	 @GetMapping("/pdf/reportAPInfo2")
 	 public ResponseEntity<byte[]> generateReport(String nopo) {
@@ -146,4 +147,11 @@ public class ControllerReportsAP {
 	 public List<ReportBeliBelumLunas> getAllList(String pdate, String pdate2, byte choice) throws JRException, IOException  {
 		return servRLBM.tJaLapBeliBelumLunas(pdate, pdate2, choice);
 	  }
+	 
+	 @GetMapping("/excel/reportcoablmlns")
+	 public List<ReportCoaBeliLain> tJaLapCoaBeliLain(String pdate) throws JRException, IOException {
+			
+			return servRLBM.tJaLapCoaBeliLain(pdate);
+	}
+	 
 }

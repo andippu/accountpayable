@@ -19,6 +19,7 @@ import com.ap.accountpayable.Repository.IReportBeliBahanMonthly;
 import com.ap.accountpayable.Repository.IReportBeliBahanMonthlyBiaya;
 import com.ap.accountpayable.Repository.IReportBeliBahanMonthlyOthers;
 import com.ap.accountpayable.Repository.IReportBeliBelumLunas;
+import com.ap.accountpayable.Repository.IReportCoaBeliLain;
 import com.ap.accountpayable.Repository.IReportOutstandingHutang;
 import com.ap.accountpayable.Repository.IReportTandaTerimaFPajak;
 import com.ap.accountpayable.Repository.IReportUnpaidAP;
@@ -27,6 +28,7 @@ import com.ap.accountpayable.models.ReportBeliBahanMonthly;
 import com.ap.accountpayable.models.ReportBeliBahanMonthlyBiaya;
 import com.ap.accountpayable.models.ReportBeliBahanMonthlyOthers;
 import com.ap.accountpayable.models.ReportBeliBelumLunas;
+import com.ap.accountpayable.models.ReportCoaBeliLain;
 import com.ap.accountpayable.models.ReportOutstandingHutang;
 import com.ap.accountpayable.models.ReportTandaTerimaFPajak;
 import com.ap.accountpayable.models.ReportUnpaidAP;
@@ -59,6 +61,8 @@ public class ServiceReportLapBeliBahanMonthly {
 	IReportUnpaidAP repoUPAP;
 	@Autowired
 	IReportBeliBelumLunas repoBlBlLns;
+	@Autowired
+	IReportCoaBeliLain repoCBLLN;
 	
 	public void tJaLapBeliBahanMonthly(String period, HttpServletResponse response) throws JRException, IOException {
 		List<ReportBeliBahanMonthly> RLBM= repoRLBM.findByRlbmPeriodMonthOrderByRlbmTtbDate(period);		
@@ -151,7 +155,12 @@ public class ServiceReportLapBeliBahanMonthly {
 				String temp=repoBlBlLns.execBlBlLnKecilSama(pdate, pdate2);
 				return repoBlBlLns.findAll();
 			}
-		}		
+		}	
+	}
+		
+	public List<ReportCoaBeliLain> tJaLapCoaBeliLain(String pdate) throws JRException, IOException {	
+			String temp=repoCBLLN.execCoaBeliLain(pdate);
+			return repoCBLLN.findAll();
 		
 	}
 	
