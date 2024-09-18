@@ -1,9 +1,12 @@
 package com.ap.accountpayable.contollers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ap.accountpayable.models.ReportBeliBelumLunas;
@@ -16,6 +19,8 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperPrint;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,6 +34,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperExportManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +45,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControllerReportsAP {
 	@Autowired
 	ServiceReportLapBeliBahanMonthly servRLBM;
-	
+	 private final Path fileStorageLocation = Paths.get("D:\\UPLOADFILES");
 	
 	 @GetMapping("/pdf/reporLapBeliBahanMontly")
 	 public void createPDF(String period, HttpServletResponse response) throws IOException, JRException {
@@ -153,5 +159,51 @@ public class ControllerReportsAP {
 			
 			return servRLBM.tJaLapCoaBeliLain(pdate);
 	}
+	 
+	 @GetMapping("/download/hutdgIdrExcel")
+		public ResponseEntity<Resource> HutangDagangExcel(@RequestParam String filename, String bulan, String title) {
+		    	String temp = servRLBM.getHutangDagangIdrExcel(bulan, title);
+		    	
+		        try {
+		        	
+		            Path filePath = fileStorageLocation.resolve(filename).normalize();
+		            Resource resource = new UrlResource(filePath.toUri());
+
+		            if (resource.exists()) {
+		                String contentType = "application/octet-stream";
+		                return ResponseEntity.ok()
+		                        .contentType(org.springframework.http.MediaType.parseMediaType(contentType))
+		                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+		                        .body(resource);
+		            } else {
+		                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		            }
+		        } catch (IOException ex) {
+		            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		        }
+		}
+	 
+	 @GetMapping("/download/hutdgIdr")
+		public ResponseEntity<Resource> LapHutangIDR(@RequestParam String filename, String bulan, String title) {
+		    	String temp = servRLBM.getLapHutangDagangIdr(bulan, title);
+		    	
+		        try {
+		        	
+		            Path filePath = fileStorageLocation.resolve(filename).normalize();
+		            Resource resource = new UrlResource(filePath.toUri());
+
+		            if (resource.exists()) {
+		                String contentType = "application/octet-stream";
+		                return ResponseEntity.ok()
+		                        .contentType(org.springframework.http.MediaType.parseMediaType(contentType))
+		                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+		                        .body(resource);
+		            } else {
+		                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		            }
+		        } catch (IOException ex) {
+		            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		        }
+		}
 	 
 }

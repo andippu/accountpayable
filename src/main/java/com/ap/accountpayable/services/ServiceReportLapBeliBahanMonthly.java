@@ -20,6 +20,7 @@ import com.ap.accountpayable.Repository.IReportBeliBahanMonthlyBiaya;
 import com.ap.accountpayable.Repository.IReportBeliBahanMonthlyOthers;
 import com.ap.accountpayable.Repository.IReportBeliBelumLunas;
 import com.ap.accountpayable.Repository.IReportCoaBeliLain;
+import com.ap.accountpayable.Repository.IReportHutangDagangIdrRepository;
 import com.ap.accountpayable.Repository.IReportOutstandingHutang;
 import com.ap.accountpayable.Repository.IReportTandaTerimaFPajak;
 import com.ap.accountpayable.Repository.IReportUnpaidAP;
@@ -63,6 +64,8 @@ public class ServiceReportLapBeliBahanMonthly {
 	IReportBeliBelumLunas repoBlBlLns;
 	@Autowired
 	IReportCoaBeliLain repoCBLLN;
+	@Autowired
+	IReportHutangDagangIdrRepository repoHDGI;
 	
 	public void tJaLapBeliBahanMonthly(String period, HttpServletResponse response) throws JRException, IOException {
 		List<ReportBeliBahanMonthly> RLBM= repoRLBM.findByRlbmPeriodMonthOrderByRlbmTtbDate(period);		
@@ -188,6 +191,14 @@ public class ServiceReportLapBeliBahanMonthly {
 
         return jasperPrint;
     }
+	
+	public String getHutangDagangIdrExcel(String bulan, String title) {
+		return repoHDGI.getExcel(bulan, title);
+	}
+	
+	public String getLapHutangDagangIdr(String bulan, String title) {
+		return repoHDGI.getLapHutangIdr(bulan, title);
+	}
 
 
 }
