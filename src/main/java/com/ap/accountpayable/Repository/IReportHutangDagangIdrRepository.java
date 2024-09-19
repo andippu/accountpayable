@@ -18,11 +18,22 @@ import java.util.List;
 @CrossOrigin("http://localhost:4200")
 public interface IReportHutangDagangIdrRepository extends JpaRepository<ReportHutangDagangIdr, BigDecimal> {
 	
+	@Procedure(procedureName = "HIT_KARTU")
+	String runHitKartu(String bulan);
+	
 	@Procedure(procedureName = "GET_EXCEL")
 	String getExcel(String bulan, String title);
 	
 	@Procedure(procedureName = "LAP_UTANG_IDR")
 	String getLapHutangIdr(String bulan, String title);
+	
+	@Procedure(procedureName = "CLOSING_HUTANG_UMUM_IDR")
+	String runCloseHutangUmumIdr(String pnys);
+	
+	@Procedure(procedureName = "POSTING_JURNAL_UMUM_IDR")
+	String runPostHutangUmuIdr(String bulan);
+	
+	
 	
 
 }

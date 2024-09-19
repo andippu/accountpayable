@@ -193,11 +193,20 @@ public class ServiceReportLapBeliBahanMonthly {
     }
 	
 	public String getHutangDagangIdrExcel(String bulan, String title) {
+		repoHDGI.runHitKartu(bulan);
 		return repoHDGI.getExcel(bulan, title);
 	}
 	
 	public String getLapHutangDagangIdr(String bulan, String title) {
 		return repoHDGI.getLapHutangIdr(bulan, title);
+	}
+	
+	public String runCloseHutangUmumIdr(String pnys) {
+		return repoHDGI.runCloseHutangUmumIdr(pnys);
+	}
+	
+	public String getPostHutangUmuIdr(String bulan) {
+		return repoHDGI.runPostHutangUmuIdr(bulan);
 	}
 
 

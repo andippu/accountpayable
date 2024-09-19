@@ -160,13 +160,16 @@ public class ControllerReportsAP {
 			return servRLBM.tJaLapCoaBeliLain(pdate);
 	}
 	 
-	 @GetMapping("/download/hutdgIdrExcel")
-		public ResponseEntity<Resource> HutangDagangExcel(@RequestParam String filename, String bulan, String title) {
-		    	String temp = servRLBM.getHutangDagangIdrExcel(bulan, title);
+	 
+	 // hutang umum idr
+	 @GetMapping("/closeumumidr/hutdgIdrExcel")
+		public ResponseEntity<Resource> HutangDagangExcel(@RequestParam String filename, String bulan) {
+		    	String temp = servRLBM.getHutangDagangIdrExcel(bulan, filename);
+		    	String fl=filename+" "+bulan+".xml";
 		    	
 		        try {
 		        	
-		            Path filePath = fileStorageLocation.resolve(filename).normalize();
+		            Path filePath = fileStorageLocation.resolve(fl).normalize();
 		            Resource resource = new UrlResource(filePath.toUri());
 
 		            if (resource.exists()) {
@@ -183,13 +186,14 @@ public class ControllerReportsAP {
 		        }
 		}
 	 
-	 @GetMapping("/download/hutdgIdr")
-		public ResponseEntity<Resource> LapHutangIDR(@RequestParam String filename, String bulan, String title) {
-		    	String temp = servRLBM.getLapHutangDagangIdr(bulan, title);
-		    	
+	 @GetMapping("/closeumumidr/hutdgIdr")
+		public ResponseEntity<Resource> LapHutangIDR(@RequestParam String filename, String bulan) {
+		    	String temp = servRLBM.getLapHutangDagangIdr(bulan, filename);
+		    	String fl=filename+" "+bulan+".xml";
+		    	System.out.println("aaaaa : "+fl);
 		        try {
 		        	
-		            Path filePath = fileStorageLocation.resolve(filename).normalize();
+		            Path filePath = fileStorageLocation.resolve(fl).normalize();
 		            Resource resource = new UrlResource(filePath.toUri());
 
 		            if (resource.exists()) {
@@ -205,5 +209,15 @@ public class ControllerReportsAP {
 		            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 		        }
 		}
+	 
+	 @GetMapping("/closeumumidr/runcloseumumidr")
+	 public String runCloseHutangUmumIdr(String pnys) throws JRException, IOException {
+			return servRLBM.runCloseHutangUmumIdr(pnys);
+	}
+	
+	 @GetMapping("/closeumumidr/postumumidr")
+	 public String getPostHutangUmuIdr(String bulan) throws JRException, IOException {
+			return servRLBM.getPostHutangUmuIdr(bulan);
+	}
 	 
 }
