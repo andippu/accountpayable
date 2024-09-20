@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
+import org.springframework.web.client.RestTemplate;
 
 import com.ap.accountpayable.Repository.IReportApInfo;
 import com.ap.accountpayable.Repository.IReportBeliBahanMonthly;
@@ -21,6 +22,7 @@ import com.ap.accountpayable.Repository.IReportBeliBahanMonthlyOthers;
 import com.ap.accountpayable.Repository.IReportBeliBelumLunas;
 import com.ap.accountpayable.Repository.IReportCoaBeliLain;
 import com.ap.accountpayable.Repository.IReportHutangDagangIdrRepository;
+import com.ap.accountpayable.Repository.IReportHutangdagangValasRepository;
 import com.ap.accountpayable.Repository.IReportOutstandingHutang;
 import com.ap.accountpayable.Repository.IReportTandaTerimaFPajak;
 import com.ap.accountpayable.Repository.IReportUnpaidAP;
@@ -66,6 +68,9 @@ public class ServiceReportLapBeliBahanMonthly {
 	IReportCoaBeliLain repoCBLLN;
 	@Autowired
 	IReportHutangDagangIdrRepository repoHDGI;
+	@Autowired
+	IReportHutangdagangValasRepository repoHDGV;
+	
 	
 	public void tJaLapBeliBahanMonthly(String period, HttpServletResponse response) throws JRException, IOException {
 		List<ReportBeliBahanMonthly> RLBM= repoRLBM.findByRlbmPeriodMonthOrderByRlbmTtbDate(period);		
@@ -192,6 +197,7 @@ public class ServiceReportLapBeliBahanMonthly {
         return jasperPrint;
     }
 	
+	
 	public String getHutangDagangIdrExcel(String bulan, String title) {
 		repoHDGI.runHitKartu(bulan);
 		return repoHDGI.getExcel(bulan, title);
@@ -207,6 +213,18 @@ public class ServiceReportLapBeliBahanMonthly {
 	
 	public String getPostHutangUmuIdr(String bulan) {
 		return repoHDGI.runPostHutangUmuIdr(bulan);
+	}
+	
+	public String getHutangDagangValasExcel(String bulan, String title) {
+		
+		
+		repoHDGV.runHitKartuValas(bulan);
+		
+		return repoHDGV.getExcelValas(bulan, title);
+	}
+	
+	public String runCloseHutangValas(String pnys) {
+		return repoHDGV.runCloseHutangUmumValas(pnys);
 	}
 
 

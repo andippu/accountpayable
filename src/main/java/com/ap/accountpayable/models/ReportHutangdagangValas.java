@@ -16,45 +16,54 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "HUTANG_DAGANG_IDR")
-public class ReportHutangDagangIdr {
-	
+@Table(name = "HUTANG_DAGANG_VALAS")
+public class ReportHutangdagangValas {
 	 @Id
 	 @Column(name="NOUR",  nullable = false)
-	 private BigDecimal hdgiId;
+	 private BigDecimal hdgvId;
 	 
 	 @Column(name="HD_SPL_ID")
-	 private BigDecimal hdgiSplCode;
+	 private Integer hdgvSplCode;
 	 
 	 @Column(name="KURS_CODE", length=10)
-	 private String hdgiKursCode;
+	 private String hdgvKursCode;
 	
 	 @Column(name="TANGGAL")
-	 private Date hdgiDate;
-	 
+	 private Date hdgvDate;
+
 	 @Column(name="NO_BUKTI", length=100)
-	 private String hdgiNoBukti;
+	 private String hdgvNoBukti;
 	 
 	 @Column(name="KETERANGAN", length=300)
-	 private String hdgiKeterangan;
-	 	 
+	 private String hdgvKeterangan;
+	
 	 @Column(name="DEBET")
-	 private BigDecimal hdgiDebet;
+	 private BigDecimal hdgvDebet;
 	 
 	 @Column(name="KREDIT")
-	 private BigDecimal hdgiCredit;
+	 private BigDecimal hdgvCredit;
 	 
 	 @Column(name="SALDO")
-	 private BigDecimal hdgiSaldo;
+	 private BigDecimal hdgvSaldo;
 	 
 	 @Column(name="RETUR")
-	 private BigDecimal hdgiRetur;
+	 private BigDecimal hdgvRetur;
 	
 	 @Column(name="PERIODE", length=6)
-	 private String hdgiPeriode;
+	 private String hdgvPeriode;
 	 
 	 @Column(name="NO_ACC", length=30)
-	 private String hdgiNoAcc;
+	 private String hdgvNoAcc;
 	 
+	 @Column(name="STATUS", length=1)
+	 private String hdgvStatus;
+	 
+	 @Column(name="ST", length=1)
+	 private String hdgvSt;
+	 
+	 @Column(name="NO_TTB", length=100)
+	 private String hdgvTtbt;
+	
+
 
 }

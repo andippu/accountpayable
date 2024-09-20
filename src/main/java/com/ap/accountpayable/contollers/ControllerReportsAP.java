@@ -8,10 +8,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
+import com.ap.accountpayable.models.Kurs;
 import com.ap.accountpayable.models.ReportBeliBelumLunas;
 import com.ap.accountpayable.models.ReportCoaBeliLain;
 import com.ap.accountpayable.models.ReportOutstandingHutang;
+import com.ap.accountpayable.services.ServiceKurs;
 import com.ap.accountpayable.services.ServiceReportLapBeliBahanMonthly;
 
 import net.sf.jasperreports.engine.JRException;
@@ -23,6 +26,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,6 +49,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControllerReportsAP {
 	@Autowired
 	ServiceReportLapBeliBahanMonthly servRLBM;
+	@Autowired
+	ServiceKurs servkurs;
+	
 	 private final Path fileStorageLocation = Paths.get("D:\\UPLOADFILES");
 	
 	 @GetMapping("/pdf/reporLapBeliBahanMontly")
@@ -218,6 +225,45 @@ public class ControllerReportsAP {
 	 @GetMapping("/closeumumidr/postumumidr")
 	 public String getPostHutangUmuIdr(String bulan) throws JRException, IOException {
 			return servRLBM.getPostHutangUmuIdr(bulan);
+	}
+	 
+	 //hutang umum valas
+	 
+	 @GetMapping("/closeumumval/hutdgvalExcel")
+		public  ResponseEntity<Resource> HutangDagangValExcel(@RequestParam String filename, String bulan) {
+		    	String temp = servRLBM.getHutangDagangValasExcel(bulan, filename);	
+		    	
+		    	
+		        List<Kurs> kr = servkurs.getkursWithOutList("IDR");
+		        
+		        for (int i = 0; i < kr.size(); i++) {
+		    	
+		        	String fl=filename+kr.get(i).getKursDesc()+" "+bulan+".xml";
+		        	System.out.println("zzzzzzzzzzzzzzzzzz : "+filename+kr.get(i).getKursDesc()+" "+bulan+".xml");
+		    	    try {
+		        	
+		    	    	Path filePath = fileStorageLocation.resolve(fl).normalize();
+		    	    	Resource resource = new UrlResource(filePath.toUri());
+
+		    	    	if (resource.exists()) {
+		    	    		String contentType = "application/octet-stream";
+		    	    		return ResponseEntity.ok()
+		                        .contentType(org.springframework.http.MediaType.parseMediaType(contentType))
+		                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+		                        .body(resource);
+		    	    	} else {
+		    	    		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		    	    	}
+		    	    } catch (IOException ex) {
+		    	    	return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		    	    }
+		        }	
+		        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+	 
+	 @GetMapping("/closeumumval/runcloseumumval")
+	 public String runCloseHutangUmumValas(String pnys) throws JRException, IOException {
+			return servRLBM.runCloseHutangValas(pnys);
 	}
 	 
 }
