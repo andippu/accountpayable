@@ -227,8 +227,7 @@ public class ControllerReportsAP {
 			return servRLBM.getPostHutangUmuIdr(bulan);
 	}
 	 
-	 //hutang umum valas
-	 
+	 //hutang umum valas	 
 	 @GetMapping("/closeumumval/hutdgvalExcel")
 		public  ResponseEntity<Resource> HutangDagangValExcel(@RequestParam String filename, String bulan) {
 		    	String temp = servRLBM.getHutangDagangValasExcel(bulan, filename);	
@@ -266,4 +265,135 @@ public class ControllerReportsAP {
 			return servRLBM.runCloseHutangValas(pnys);
 	}
 	 
+	 // hutang Lain-Lain idr
+	 @GetMapping("/closelainidr/hutlainIdrExcel")
+		public ResponseEntity<Resource> HutangLainExcel(@RequestParam String filename, String bulan) {
+		    	String temp = servRLBM.getHutangLainIdrExcel(bulan, bulan);
+		    	String fl=filename+" "+bulan+".xml";
+		    	
+		        try {
+		        	
+		            Path filePath = fileStorageLocation.resolve(fl).normalize();
+		            Resource resource = new UrlResource(filePath.toUri());
+
+		            if (resource.exists()) {
+		                String contentType = "application/octet-stream";
+		                return ResponseEntity.ok()
+		                        .contentType(org.springframework.http.MediaType.parseMediaType(contentType))
+		                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+		                        .body(resource);
+		            } else {
+		                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		            }
+		        } catch (IOException ex) {
+		            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		        }
+		}
+	 
+	 @GetMapping("/closelainidr/hutlainIdr")
+		public ResponseEntity<Resource> LapHutangLainIDR(@RequestParam String filename, String bulan) {
+		    	String temp = servRLBM.getLapHutangDagangIdr(bulan, filename);
+		    	String fl=filename+" "+bulan+".xml";
+		    	System.out.println("aaaaa : "+fl);
+		        try {
+		        	
+		            Path filePath = fileStorageLocation.resolve(fl).normalize();
+		            Resource resource = new UrlResource(filePath.toUri());
+
+		            if (resource.exists()) {
+		                String contentType = "application/octet-stream";
+		                return ResponseEntity.ok()
+		                        .contentType(org.springframework.http.MediaType.parseMediaType(contentType))
+		                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+		                        .body(resource);
+		            } else {
+		                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		            }
+		        } catch (IOException ex) {
+		            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		        }
+		}
+	 
+	 @GetMapping("/closelainidr/runcloselainidr")
+	 public String runCloseHutanglainIdr(String pnys) throws JRException, IOException {
+			return servRLBM.runCloseHutangLainIdr(pnys);
+	}
+	
+	 @GetMapping("/closelainidr/postlainidr")
+	 public String getPostHutangLainIdr(String bulan) throws JRException, IOException {
+			return servRLBM.getPostHutangLainIdr(bulan);
+	}
+	 
+	//hutang lain-lain valas	 
+	 @GetMapping("/closelainval/hutlainvalExcel")
+		public  ResponseEntity<Resource> HutangLainValExcel(@RequestParam String filename, String bulan) {
+		    	String temp = servRLBM.getHutangLainValasExcel(bulan, bulan);
+		    	
+		        List<Kurs> kr = servkurs.getkursWithOutList("IDR");
+		        
+		        for (int i = 0; i < kr.size(); i++) {
+		    	
+		        	String fl=filename+kr.get(i).getKursDesc()+" "+bulan+".xml";
+		        	System.out.println("zzzzzzzzzzzzzzzzzz : "+filename+kr.get(i).getKursDesc()+" "+bulan+".xml");
+		    	    try {
+		        	
+		    	    	Path filePath = fileStorageLocation.resolve(fl).normalize();
+		    	    	Resource resource = new UrlResource(filePath.toUri());
+
+		    	    	if (resource.exists()) {
+		    	    		String contentType = "application/octet-stream";
+		    	    		return ResponseEntity.ok()
+		                        .contentType(org.springframework.http.MediaType.parseMediaType(contentType))
+		                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+		                        .body(resource);
+		    	    	} else {
+		    	    		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		    	    	}
+		    	    } catch (IOException ex) {
+		    	    	return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		    	    }
+		        }	
+		        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+	 
+	 @GetMapping("/closelainval/runcloselainval")
+	 public String runCloseHutangLainValas(String pnys) throws JRException, IOException {
+			return servRLBM.runCloseHutangLainValas(pnys);
+	}
+	 
+	 
+	//hutang Biaya IDR	
+	 @GetMapping("/closebiayaidr/hutbiayaIdr")
+		public ResponseEntity<Resource> LapHutangBiayaIDR(@RequestParam String filename, String bulan) {
+		    	String temp = servRLBM.getHutangBiayaIdrExcel(bulan, bulan);
+		    	String fl=filename+" "+bulan+".xml";
+		    	System.out.println("aaaaa : "+fl);
+		        try {
+		        	
+		            Path filePath = fileStorageLocation.resolve(fl).normalize();
+		            Resource resource = new UrlResource(filePath.toUri());
+
+		            if (resource.exists()) {
+		                String contentType = "application/octet-stream";
+		                return ResponseEntity.ok()
+		                        .contentType(org.springframework.http.MediaType.parseMediaType(contentType))
+		                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+		                        .body(resource);
+		            } else {
+		                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		            }
+		        } catch (IOException ex) {
+		            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		        }
+		}
+	 
+	 @GetMapping("/closebiayaidr/runclosebiayaidr")
+	 public String runCloseHutangbiayaIdr(String pnys) throws JRException, IOException {
+			return servRLBM.runCloseHutangBiayaIdr(pnys);
+	}
+	
+	 @GetMapping("/closebiayaidr/postbiayaidr")
+	 public String getPostHutangBiayaIdr(String bulan) throws JRException, IOException {
+			return servRLBM.getPostHutangBiayaIdr(bulan);
+	}
 }

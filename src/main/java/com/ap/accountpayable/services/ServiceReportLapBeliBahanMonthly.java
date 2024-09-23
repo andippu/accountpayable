@@ -203,6 +203,16 @@ public class ServiceReportLapBeliBahanMonthly {
 		return repoHDGI.getExcel(bulan, title);
 	}
 	
+	public String getHutangLainIdrExcel(String bulan, String title) {
+		repoHDGI.runHitKartuLain(bulan);
+		return repoHDGI.getExcel(bulan, title);
+	}
+	
+	public String getHutangBiayaIdrExcel(String bulan, String title) {
+		repoHDGI.runHitKartuBiaya(bulan);
+		return repoHDGI.getExcel(bulan, title);
+	}
+	
 	public String getLapHutangDagangIdr(String bulan, String title) {
 		return repoHDGI.getLapHutangIdr(bulan, title);
 	}
@@ -211,20 +221,44 @@ public class ServiceReportLapBeliBahanMonthly {
 		return repoHDGI.runCloseHutangUmumIdr(pnys);
 	}
 	
+	public String runCloseHutangLainIdr(String pnys) {
+		return repoHDGI.runCloseHutangLainIdr(pnys);
+	}
+	
+	public String runCloseHutangBiayaIdr(String pnys) {
+		return repoHDGI.runCloseHutangBiayaIdr(pnys);
+	}
+	
 	public String getPostHutangUmuIdr(String bulan) {
 		return repoHDGI.runPostHutangUmuIdr(bulan);
 	}
 	
-	public String getHutangDagangValasExcel(String bulan, String title) {
-		
-		
-		repoHDGV.runHitKartuValas(bulan);
-		
+	public String getPostHutangLainIdr(String bulan) {
+		return repoHDGI.runPostHutangLainIdr(bulan);
+	}
+	
+	public String getPostHutangBiayaIdr(String bulan) {
+		return repoHDGI.runPostHutangBiayaIdr(bulan);
+	}
+	
+	
+	public String getHutangDagangValasExcel(String bulan, String title) {	
+		repoHDGV.runHitKartuValas(bulan);		
 		return repoHDGV.getExcelValas(bulan, title);
 	}
 	
+	public String getHutangLainValasExcel(String bulan, String title) {	
+		repoHDGV.runCloseHutangLainValas(title);
+		return repoHDGV.getExcelValas(bulan, title);
+	}
+	
+	
 	public String runCloseHutangValas(String pnys) {
-		return repoHDGV.runCloseHutangUmumValas(pnys);
+		return repoHDGV.runCloseHutangLainValas(pnys);
+	}
+	
+	public String runCloseHutangLainValas(String pnys) {
+		return repoHDGV.runCloseHutangLainValas(pnys);
 	}
 
 

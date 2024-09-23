@@ -28,5 +28,10 @@ public interface IReportHutangdagangValasRepository extends JpaRepository<Report
 	@Procedure(procedureName = "PROC_CLOSE_HU_VALAS")
 	String runCloseHutangUmumValas(String pnys);
 	
+	@Procedure(procedureName = "HIT_VALAS_LAIN")
+	String runHitKartuLainValas(String bulan);
+	
+	@Procedure(procedureName = "CLOSING_HUTANG_LAIN_VALAS")
+	String runCloseHutangLainValas(String pnys);
 
 }
